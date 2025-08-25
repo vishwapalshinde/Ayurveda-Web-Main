@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ayurveda & Panchakarma Center</title>
+    <link rel="stylesheet" href="../static/style.css" />
+
+    <!-- Google Fonts: Merriweather & Tiro Devanagari Sanskrit -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Tiro+Devanagari+Sanskrit:ital,wght@0,400;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      // Sticky header on scroll
+      window.addEventListener("scroll", function () {
+        const header = document.querySelector("header");
+        if (window.scrollY > 10) {
+          header.classList.add("sticky");
+        } else {
+          header.classList.remove("sticky");
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header id="home">
+      <div class="container nav-container">
+        <div class="logo">
+          <img
+            src="../static/images/ayurved_logo-removebg-preview.png"
+            alt="Clinic Logo"
+          />
+          <span class="clinic-name">Shri VishwaNiwas Clinic</span>
+        </div>
+        <button
+          class="hamburger"
+          id="hamburger"
+          aria-label="Open navigation"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav id="mainNav">
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#panchakarma">Panchakarma</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#wishlist">Wishlist</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </nav>
+        <script>
+          // Responsive Navbar Hamburger Toggle
+          document.addEventListener("DOMContentLoaded", function () {
+            const hamburger = document.getElementById("hamburger");
+            const nav = document.getElementById("mainNav");
+            if (hamburger && nav) {
+              hamburger.addEventListener("click", function () {
+                hamburger.classList.toggle("active");
+                nav.classList.toggle("open");
+                const expanded =
+                  hamburger.getAttribute("aria-expanded") === "true";
+                hamburger.setAttribute("aria-expanded", !expanded);
+              });
+              // Close nav when clicking a link (mobile UX)
+              nav.querySelectorAll("a").forEach((link) => {
+                link.addEventListener("click", function () {
+                  if (window.innerWidth <= 900) {
+                    hamburger.classList.remove("active");
+                    nav.classList.remove("open");
+                    hamburger.setAttribute("aria-expanded", "false");
+                  }
+                });
+              });
+            }
+            // Hide nav by default on mobile
+            function handleResize() {
+              if (window.innerWidth > 900) {
+                nav.classList.remove("open");
+                hamburger.classList.remove("active");
+                hamburger.setAttribute("aria-expanded", "false");
+              }
+            }
+            window.addEventListener("resize", handleResize);
+            handleResize();
+          });
+        </script>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h4>AAYURVEDA & PANCHAKARMA CENTER</h4>
+        <h1 class="sanskrit-heading" id="sanskritType">
+          आयुर्वेदः जीवनस्य दीपः,<br />आरोग्यं तस्य प्रदीपनम्।
+        </h1>
+        <script>
+          // Typewriter effect for Sanskrit heading on viewport entry
+          function runTypewriterAnimation() {
+            var el = document.getElementById("sanskritType");
+            var text = "आयुर्वेदः जीवनस्य दीपः,\nआरोग्यं तस्य प्रदीपनम्।";
+            if (el.classList.contains("typewriter-running")) return; // Prevent retrigger while running
+            el.classList.add("typewriter-running");
+            el.classList.add("typewriter");
+            el.innerHTML = "";
+            let i = 0;
+            function type() {
+              if (i <= text.length) {
+                el.innerHTML = text.slice(0, i).replace(/\n/g, "<br>");
+                i++;
+                setTimeout(type, 60);
+              } else {
+                el.classList.remove("typewriter");
+                el.classList.remove("typewriter-running");
+                el.innerHTML = text.replace(/\n/g, "<br>");
+              }
+            }
+            setTimeout(type, 200);
+          }
+          // Intersection Observer to trigger animation when heading enters viewport
+          document.addEventListener("DOMContentLoaded", function () {
+            var el = document.getElementById("sanskritType");
+            var text = "आयुर्वेदः जीवनस्य दीपः,\nआरोग्यं तस्य प्रदीपनम्।";
+            el.innerHTML = text.replace(/\n/g, "<br>");
+            var observer = new window.IntersectionObserver(
+              function (entries) {
+                entries.forEach(function (entry) {
+                  if (entry.isIntersecting) {
+                    runTypewriterAnimation();
+                  }
+                });
+              },
+              { threshold: 0.6 }
+            );
+            observer.observe(el);
+          });
+        </script>
+        <p>
+          Rooted in ancient wisdom, we welcome you to experience the healing
+          touch of Ayurveda.
+        </p>
+        <a href="#" class="btn">Make an Appointment</a>
+      </div>
+      <div class="hero-image-wrapper">
+        <div class="hero-image">
+          <img
+            src="../static/images/ayurved_image-removebg-preview.png"
+            alt="Ayurvedic Products"
+            class="animated-hover"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+
+    <section class="about" id="about-doctor">
+      <div class="about-flex">
+        <div class="about-img-col">
+          <img
+            src="../static/images/reallife-image-capturing-mission-ayurvedic-600nw-2565660415.webp"
+            alt="Dr. Kailas Narde - Ayurvedic Physician"
+            class="about-img"
+          />
+        </div>
+        <div class="about-text-col">
+          <h2>ABOUT THE DOCTOR</h2>
+          <h3>Dr. Kailas Maruti Narde, B.A.M.S.</h3>
+          <p>
+            A dedicated Ayurvedic Physician with over 8 years of experience, Dr.
+            Narde specializes in diagnosing and treating patients using holistic
+            and traditional methods. He is committed to restoring balance and
+            promoting patient wellness through natural therapies.
+            <br /><br />
+            Highly skilled in Panchakarma treatments, Ayurvedic medicine, and
+            personalized diet plans, his approach focuses on treating the root
+            cause of ailments to empower you to achieve lasting health.
+          </p>
+          <div class="doctor-contact">
+            <p>
+              <strong>Qualification:</strong> B.A.M.S. (Bachelor of Ayurvedic
+              Medicine and Surgery)
+            </p>
+            <p>
+              <strong>Contact:</strong>
+              <a href="tel:+919822044945">9822044945</a>
+            </p>
+            <p>
+              <strong>Email:</strong>
+              <a href="mailto:kailasnarade99@gmail.com"
+                >kailasnarade99@gmail.com</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- <section class="about" id="about">
+      <div class="about-flex">
+        <div class="about-img-col">
+          <img
+            src="../static/images/reallife-image-capturing-mission-ayurvedic-600nw-2565660415.webp"
+            alt="Ayurveda Real Life"
+            class="about-img"
+          />
+        </div>
+        <div class="about-text-col">
+          <h2>ABOUT US</h2>
+          <h3>
+            Welcome to Our Ayurvedic Clinic: Healing Through Nature's Wisdom
+          </h3>
+          <p>
+            Ayurveda, the ancient science of life, is a holistic system of
+            medicine that emphasizes balance in body, mind, and spirit. At our
+            clinic, we blend traditional Ayurvedic wisdom with modern care to
+            offer personalized treatments for every individual.<br /><br />
+            Our lead doctor is a highly experienced Vaidya, dedicated to guiding
+            patients on their journey to wellness using natural therapies,
+            herbal medicines, and lifestyle recommendations. We believe in
+            treating the root cause, not just the symptoms, and empowering you
+            to achieve lasting health.<br /><br />
+            Experience authentic Panchakarma therapies, rejuvenating wellness
+            programs, and compassionate care in a serene environment. Join us in
+            embracing the healing touch of Ayurveda for a healthier, happier
+            life.
+          </p>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- Our Treatments Section -->
+    <section class="treatments" id="treatments">
+      <div class="container">
+        <h4 class="section-subtitle">OUR TREATMENTS</h4>
+        <h2 class="section-title">
+          Ayurvedic Solutions For Holistic Well-Being
+        </h2>
+
+        <div class="treatment-grid" id="treatment-grid">
+          <!-- Treatment 1 -->
+          <div class="treatment-card">
+            <img
+              src="../static/images/digestive.jpg"
+              alt="Digestive Disorders"
+            />
+            <h3>Digestive Disorders</h3>
+            <p>
+              Effective Ayurvedic remedies for indigestion, acidity,
+              constipation, and gastric issues.
+            </p>
+          </div>
+
+          <!-- Treatment 2 -->
+          <div class="treatment-card">
+            <img
+              src="../static/images/arthritis.jpg"
+              alt="Joint Pain & Arthritis"
+            />
+            <h3>Joint Pain & Arthritis</h3>
+            <p>
+              Relieve chronic pain and improve mobility naturally with Ayurvedic
+              therapies.
+            </p>
+          </div>
+
+          <!-- Treatment 3 -->
+          <div class="treatment-card">
+            <img src="../static/images/skin.jpg" alt="Skin Diseases" />
+            <h3>Skin Diseases</h3>
+            <p>
+              Ayurvedic care for psoriasis, eczema, acne, and other skin-related
+              problems.
+            </p>
+          </div>
+        </div>
+
+        <!-- Button (Redirects to new page instead of expanding) -->
+        <div class="btn-container">
+          <a href="treatments.html" class="view-btn">View All Treatments</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- "Our Services" -->
+
+    <section id="services">
+      <div class="services-container">
+        <h2>Our Services</h2>
+        <div class="carousel-wrapper">
+          <button class="carousel-btn prev">&#10094;</button>
+          <div class="carousel">
+            <!-- Service 1 -->
+            <div class="service-card">
+              <img src="../static/images/panchakarma.jpg" alt="Panchakarma" />
+              <h3>पंचकर्म</h3>
+              <p>
+                Detoxification & rejuvenation through five Ayurvedic therapies.
+              </p>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="service-card">
+              <img src="../static/images/agni-karma.jpg" alt="Agnikarma" />
+              <h3>अग्निकर्म</h3>
+              <p>
+                Therapeutic cauterization for pain relief & musculoskeletal
+                disorders.
+              </p>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="service-card">
+              <img src="../static/images/viddha-karma.jpg" alt="Viddhakarma" />
+              <h3>विद्धकर्म</h3>
+              <p>Special needle therapy for pain management.</p>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="service-card">
+              <img
+                src="../static/images/garbha-sanskar.jpg"
+                alt="Garbha Sanskar"
+              />
+              <h3>गर्भ संस्कार</h3>
+              <p>Holistic approach for healthy pregnancy & baby development.</p>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="service-card">
+              <img
+                src="../static/images/swarnprashan.jpg"
+                alt="Suvarnaprashan"
+              />
+              <h3>सुवर्णप्राशन</h3>
+              <p>Immunity boosting drops for children.</p>
+            </div>
+
+            <!-- Service 6 -->
+            <div class="service-card">
+              <img src="../static/images/bijshuddhi.jpg" alt="Beejshuddhi" />
+              <h3>बीजशुद्धी</h3>
+              <p>Pre-conceptional care for healthy progeny.</p>
+            </div>
+
+            <!-- Service 7 -->
+            <div class="service-card">
+              <img src="../static/images/beej-sanskar.jpg" alt="Beej Sanskar" />
+              <h3>बीज संस्कार</h3>
+              <p>Purification & strengthening of reproductive tissues.</p>
+            </div>
+          </div>
+          <button class="carousel-btn next">&#10095;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- "Our Products" -->
+
+    <!-- Our Products Section -->
+    <section id="products">
+      <div class="container">
+        <h2>Our Products</h2>
+        <div class="products-grid">
+          <!-- Product 1
+          <div class="product-card">
+            <img src="images/chyawanprash.jpg" alt="Chyawanprash" />
+            <h3>Chyawanprash</h3>
+            <button class="add-cart-btn">Add to Cart</button>
+          </div> -->
+
+          <!-- Product 2 -->
+          <div class="product-card">
+            <img src="../static/images/triphala.jpg" alt="Triphala Powder" />
+            <h3>Triphala Powder</h3>
+            <!-- <button class="add-cart-btn">Add to Cart</button> -->
+            <a
+              href="https://wa.me/918999807775?text=I%20Would%20Like%20To%20Get%20An%20Appointment"
+              class="btn-cta"
+              >Add to Cart</a
+            >
+          </div>
+
+          <!-- Product 3
+          <div class="product-card">
+            <img src="images/ashwagandha.jpg" alt="Ashwagandha" />
+            <h3>Ashwagandha</h3>
+            <button class="add-cart-btn">Add to Cart</button>
+          </div> -->
+
+          <!-- Product 4 -->
+          <div class="product-card">
+            <img src="../static/images/tulsi.jpg" alt="Tulsi Drops" />
+            <h3>Tulsi Drops</h3>
+            <!-- <button class="add-cart-btn">Add to Cart</button> -->
+            <a
+              href="https://wa.me/918999807775?text=I%20Would%20Like%20To%20Get%20An%20Appointment"
+              class="btn-cta"
+              >Add to Cart</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Transform Section (below Our Products) -->
+    <!-- Transform Your Health Section -->
+    <section class="wellness-section">
+      <div class="container">
+        <h2>
+          Experience Holistic Wellness:<br />Take Charge of Your Health Today!
+        </h2>
+        <p>
+          Achieve your greatest potential by embracing holistic wellbeing. Start
+          today by taking control of your health and moving toward balance and
+          energy.
+        </p>
+        <a
+          href="https://wa.me/918999807775?text=I%20Would%20Like%20To%20Get%20An%20Appointment"
+          class="btn-cta"
+          >Make An Appointment</a
+        >
+
+        <div class="wellness-stats">
+          <div class="stat-item">
+            <h3 class="counter" data-target="7250">0</h3>
+            <p>Happy Clients</p>
+          </div>
+          <div class="stat-item">
+            <h3 class="counter" data-target="102">0</h3>
+            <p>Good Ratings</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What People Say Section -->
+    <!-- Testimonial Section -->
+    <!-- <section class="testimonial-section">
+      <div class="testimonial-container">
+        <p class="section-subtitle">WHAT PEOPLE SAY</p>
+        <h2 class="section-title">Transformative Ayurvedic Journey</h2>
+
+        <div class="testimonial-carousel-wrapper">
+          <button class="carousel-nav-btn prev-btn">&#10094;</button>
+          <div class="testimonial-carousel">
+            <div class="testimonial-card">
+              <span class="quote">❝</span>
+              <h3 class="client-name">Meghna Patil</h3>
+              <p class="role">Patient</p>
+              <div class="stars">★★★★★</div>
+              <p class="testimonial-text">
+                Excellent results for weight loss management by medicines and
+                panchakarma therapy... will recommend to all. Do visit the
+                clinic for all types of diseases...polite staff and proper
+                cleanliness in clinic...
+              </p>
+            </div>
+            <div class="testimonial-card">
+              <span class="quote">❝</span>
+              <h3 class="client-name">Jay S. Singh</h3>
+              <p class="role">Patient</p>
+              <div class="stars">★★★★★</div>
+              <p class="testimonial-text">
+                Excellent medications to all the treatments... Very good nadi
+                parikshan and prakruti parikshan by doctor... Must visit who
+                needs ayurveda treatments.
+              </p>
+            </div>
+          </div>
+          <button class="carousel-nav-btn next-btn">&#10095;</button>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- Testimonials Section -->
+    <section class="testimonial-section">
+      <div class="container">
+        <h4 class="testimonial-subtitle">WHAT PEOPLE SAY</h4>
+        <h2 class="testimonial-title">Transformative Ayurvedic Journey</h2>
+
+        <div class="testimonial-box">
+          <div class="testimonial-content">
+            <h3 id="testimonial-name">Meghna Patil</h3>
+            <p class="role">Patient</p>
+            <div class="stars">★★★★★</div>
+            <p id="testimonial-text">
+              Excellent results for weight loss management by medicines and
+              panchakarma therapy... will recommend to all. Do visit the clinic
+              for all types of diseases. Polite staff and proper cleanliness in
+              clinic...
+            </p>
+          </div>
+          <button class="next-btn" id="nextTestimonial">&#10095;</button>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      document
+        .getElementById("viewAllBtn")
+        .addEventListener("click", function () {
+          const allTreatments = document.getElementById("all-treatments");
+          allTreatments.classList.toggle("hidden");
+          this.textContent = allTreatments.classList.contains("hidden")
+            ? "View All Treatments"
+            : "Show Less";
+        });
+    </script>
+
+    <!-- <section class="treatments">
+      <h4 class="treatments-subtitle">OUR TREATMENTS</h4>
+      <h2 class="treatments-title">
+        Ayurvedic Solutions For Holistic Well-Being
+      </h2>
+      <div class="treatments-grid">
+        <div class="treatment-card">
+          <div class="treatment-img">
+            <img
+              src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80"
+              alt="AVN (Avascular Necrosis)"
+            />
+          </div>
+          <h3>AVN (Avascular Necrosis)</h3>
+          <p>
+            Get Avascular Necrosis Treatment in Ahmednagar For improved mobility
+            and well-being
+          </p>
+        </div>
+        <div class="treatment-card">
+          <div class="treatment-img">
+            <img
+              src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80"
+              alt="Cancer Care"
+            />
+          </div>
+          <h3>Cancer Care</h3>
+          <p>
+            Unparalleled Ayurvedic Treatment for cancer in Ahmednagar at
+            Vishwasiddhi Ayurvedic clinic
+          </p>
+        </div>
+        <div class="treatment-card">
+          <div class="treatment-img">
+            <img
+              src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80"
+              alt="Child Health Care"
+            />
+          </div>
+          <h3>Child Health Care</h3>
+          <p>
+            Children are pillars of the nation. Healthy youth are tomorrow’s
+            future for strong nation. Healthy food, good habits.
+          </p>
+        </div>
+      </div>
+      <a href="#" class="btn treatments-btn">View All Treatments</a>
+    </section> -->
+
+    <!-- Gallery section  -->
+
+    <section id="gallery" class="gallery-section">
+      <p class="sub-heading">OUR GALLERY</p>
+      <h2 class="main-heading">Check Our Latest Gallery</h2>
+
+      <div class="gallery-container">
+        <!-- Left button -->
+        <button class="gallery-btn prev" onclick="prevGallery()">
+          &#10094;
+        </button>
+
+        <!-- Wrapper -->
+        <div class="gallery-wrapper">
+          <div class="gallery-images" id="galleryImages">
+            <img src="../static/images/gallery1.jpg" alt="Gallery 1" />
+            <img src="../static/images/gallery2.jpg" alt="Gallery 2" />
+            <img src="../static/images/gallery3.jpg" alt="Gallery 3" />
+            <img src="../static/images/gallery4.jpg" alt="Gallery 4" />
+            <img src="../static/images/gallery5.jpg" alt="Gallery 5" />
+            <img src="../static/images/gallery6.jpg" alt="Gallery 6" />
+          </div>
+        </div>
+
+        <!-- Right button -->
+        <button class="gallery-btn next" onclick="nextGallery()">
+          &#10095;
+        </button>
+      </div>
+    </section>
+
+    <!-- Panchakarma Section -->
+
+    <section id="panchakarma" class="panchakarma-section">
+      <div class="section-title">
+        <h2>The Five Therapies of Panchakarma</h2>
+        <p>Click on a therapy to learn more about it.</p>
+      </div>
+
+      <div class="panchakarma-container">
+        <div class="circle-diagram">
+          <div class="center-circle">Panchakarma</div>
+
+          <div class="outer-circle top" data-info="vamana">Vamana</div>
+          <div class="outer-circle right" data-info="virechana">Virechana</div>
+          <div class="outer-circle bottom-right" data-info="basti">Basti</div>
+          <div class="outer-circle bottom-left" data-info="nasya">Nasya</div>
+          <div class="outer-circle left" data-info="raktamokshana">
+            Raktamokshana
+          </div>
+        </div>
+
+        <div class="info-box">
+          <h3 id="info-title">Welcome</h3>
+          <p id="info-description">
+            Panchakarma is the ultimate mind-body healing experience for
+            detoxifying the body, strengthening the immune system, and restoring
+            balance. Please select a therapy from the diagram to view its
+            details.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- <section id="panchakarma" class="panchakarma-section">
+      <div class="panchakarma-container">
+        <div class="circle-diagram">
+          <div class="center-circle">Panchakarma</div>
+          <div class="outer-circle top">Vamana</div>
+          <div class="outer-circle right">Virechana</div>
+          <div class="outer-circle bottom-right">Basti</div>
+          <div class="outer-circle bottom-left">Nasya</div>
+          <div class="outer-circle left">Raktamokshana</div>
+        </div>
+
+        <div class="panchakarma-list">
+          <h2>Panchakarma Section</h2>
+          <ul>
+            <li><strong>Vamana</strong></li>
+            <li><strong>Virechana</strong></li>
+            <li><strong>Basti</strong></li>
+            <li><strong>Nasya</strong></li>
+            <li><strong>Raktamokshana</strong></li>
+          </ul>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- FAQ section -->
+
+    <section class="faq-appointment-section" id="contact">
+      <div class="container">
+        <div class="faq">
+          <h2>Frequently Asked Questions</h2>
+          <div class="accordion">
+            <div class="accordion-item">
+              <button class="accordion-header">
+                What is Panchakarma, and how does it benefit me?
+                <span class="icon">+</span>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Panchakarma is a comprehensive Ayurvedic detoxification and
+                  rejuvenation therapy that aims to eliminate toxins from the
+                  body while balancing the doshas. It offers numerous benefits,
+                  including improved digestion, enhanced immunity, stress
+                  relief, and overall vitality.
+                </p>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-header">
+                Is Ayurveda suitable for everyone?
+                <span class="icon">+</span>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Ayurveda is generally safe for most people. However, the
+                  suitability of specific treatments depends on age, health
+                  condition, and individual constitution. Consulting a qualified
+                  Ayurvedic doctor ensures personalized recommendations.
+                </p>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-header">
+                How long does it take to see results?
+                <span class="icon">+</span>
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Results vary depending on the individual and the treatment
+                  plan. Some people notice improvements within days, while
+                  others may require several weeks of consistent Ayurvedic care
+                  for visible results.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="appointment-form">
+          <h2>Book Your Appointment</h2>
+          <form>
+            <input type="text" placeholder="Your Name*" required />
+            <input type="email" placeholder="Email ID*" required />
+            <input type="tel" placeholder="Contact No*" required />
+
+            <input
+              type="text"
+              placeholder="Appointment Date*"
+              required
+              onfocus="(this.type='date')"
+              onblur="if(!this.value) this.type='text'"
+            />
+            <input
+              type="text"
+              placeholder="Appointment Time*"
+              required
+              onfocus="(this.type='time')"
+              onblur="if(!this.value) this.type='text'"
+            />
+
+            <textarea placeholder="Your Message" rows="4"></textarea>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ + Appointment Section -->
+    <!-- <section class="faq-appointment-section" id="contact">
+      <div class="container"> 
+        <div class="faq">
+          <h2>Frequently Asked Questions</h2>
+          <div class="accordion"></div>
+          <div class="accordion-item">
+            <button class="accordion-header">
+              What is Panchakarma, and how does it benefit me?
+            </button>
+            <div class="accordion-content">
+              Panchakarma is a comprehensive Ayurvedic detoxification and
+              rejuvenation therapy that aims to eliminate toxins from the body
+              while balancing the doshas. It offers numerous benefits, including
+              improved digestion, enhanced immunity, stress relief, and overall
+              vitality.
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header">
+              Is Ayurveda suitable for everyone?
+            </button>
+            <div class="accordion-content">
+              Ayurveda is generally safe for most people. However, the
+              suitability of specific treatments depends on age, health
+              condition, and individual constitution. Consulting a qualified
+              Ayurvedic doctor ensures personalized recommendations.
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header">
+              How long does it take to see results?
+            </button>
+            <div class="accordion-content">
+              Results vary depending on the individual and the treatment plan.
+              Some people notice improvements within days, while others may
+              require several weeks of consistent Ayurvedic care for visible
+              results.
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="appointment-form">
+          <h2>Book Your Appointment</h2>
+          <form>
+            <input type="text" placeholder="Your Name*" required />
+            <input type="email" placeholder="Email ID*" required />
+            <input type="text" placeholder="Contact No*" required />
+            <textarea placeholder="Your Message"></textarea>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- Footer -->
+
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-column logo-social">
+          <img
+            src="../static/images/ayurved_logo-removebg-preview.png"
+            alt="HERB VEDA LIFE Logo"
+            class="footer-logo"
+          />
+          <p class="tagline">Shri VishwaNiwas Clinic<br />NatureInEveryDrop</p>
+          <div class="social-icons">
+            <!-- Add correct static image paths for social icons if available -->
+            <!-- <a href="#"><img src="../static/images/facebook-icon.png" alt="Facebook" /></a> -->
+            <!-- <a href="#"><img src="../static/images/instagram-icon.png" alt="Instagram" /></a> -->
+            <!-- <a href="#"><img src="../static/images/youtube-icon.png" alt="YouTube" /></a> -->
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h3>Products</h3>
+          <ul>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">Weight Loss</a></li>
+            <li><a href="#">Beauty Products</a></li>
+            <li><a href="#">Stamina Strength Products</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Disclaimer</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Shipping & Delivery</a></li>
+            <li><a href="#">Refund & Return Policy</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Contact Us</h3>
+          <ul class="contact-info">
+            <li>📞 +91 9822944945</li>
+            <li>📞 +91 9595965710</li>
+            <li>📧 kailasnarale99@gmail.com</li>
+            <li>📍 Navrang Chowk, Near Shital Collection, Mangalvedha</li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bottom Footer -->
+    <div class="bottom-footer">
+      <p>
+        © 2025 VishwaNiWas Ayurved | All Rights Reserved | Designed with
+        <a href="https://www.innovatehive.in/">InnovateHive Technology</a>
+      </p>
+    </div>
+
+    <script>
+      const carousel = document.querySelector("#services .carousel");
+      const prevBtn = document.querySelector("#services .prev");
+      const nextBtn = document.querySelector("#services .next");
+
+      nextBtn.addEventListener("click", () => {
+        carousel.scrollBy({ left: 320, behavior: "smooth" });
+      });
+
+      prevBtn.addEventListener("click", () => {
+        carousel.scrollBy({ left: -320, behavior: "smooth" });
+      });
+    </script>
+    <script>
+      const counters = document.querySelectorAll(".counter");
+      const options = { threshold: 0.5 };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const counter = entry.target;
+            const update = () => {
+              const target = +counter.getAttribute("data-target");
+              const current = +counter.innerText;
+              const increment = target / 100;
+              if (current < target) {
+                counter.innerText = Math.ceil(current + increment);
+                setTimeout(update, 20);
+              } else {
+                counter.innerText = target;
+              }
+            };
+            update();
+            observer.unobserve(counter);
+          }
+        });
+      }, options);
+
+      counters.forEach((counter) => observer.observe(counter));
+    </script>
+    <script>
+      const testimonials = [
+        {
+          name: "Meghna Patil",
+          role: "Patient",
+          text: "Excellent results for weight loss management by medicines and panchakarma therapy... will recommend to all. Do visit the clinic for all types of diseases. Polite staff and proper cleanliness in clinic...",
+        },
+        {
+          name: "Jay S. Singh",
+          role: "Patient",
+          text: "Excellent medications to all the treatments... Very good nadi parikshan and prakruti parikshan by doctor. Must visit who needs ayurveda treatments.",
+        },
+        {
+          name: "Ankita Sharma",
+          role: "Patient",
+          text: "I had an amazing experience with panchakarma therapy. Feeling more energetic and balanced in life. Highly recommended!",
+        },
+      ];
+
+      let index = 0;
+      const nameEl = document.getElementById("testimonial-name");
+      const roleEl = document.querySelector(".role");
+      const textEl = document.getElementById("testimonial-text");
+      const nextBtnm = document.getElementById("nextTestimonial");
+
+      function setTestimonial(idx) {
+        nameEl.textContent = testimonials[idx].name;
+        roleEl.textContent = testimonials[idx].role;
+        textEl.textContent = testimonials[idx].text;
+      }
+
+      // Set initial testimonial on page load
+      setTestimonial(index);
+
+      nextBtnm.addEventListener("click", () => {
+        index = (index + 1) % testimonials.length;
+        setTestimonial(index);
+      });
+    </script>
+
+    <!-- <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const accordions = document.querySelectorAll(".accordion-header");
+
+        accordions.forEach((header) => {
+          header.addEventListener("click", () => {
+            const item = header.parentElement;
+            const content = item.querySelector(".accordion-content");
+
+            // Close all other accordions
+            document.querySelectorAll(".accordion-content").forEach((c) => {
+              if (c !== content) {
+                c.classList.remove("open");
+                c.previousElementSibling.classList.remove("active");
+              }
+            });
+
+            // Toggle clicked accordion
+            header.classList.toggle("active");
+            content.classList.toggle("open");
+          });
+        });
+      });
+    </script> -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // 1. Store the detailed information for each therapy
+        const panchakarmaData = {
+          vamana: {
+            title: "Vamana (Therapeutic Emesis)",
+            description:
+              "Vamana is a medicated emesis therapy that removes Kapha toxins collected in the body. It is used to treat chronic indigestion, asthma, and skin disorders like psoriasis, promoting better respiratory and digestive health.",
+          },
+          virechana: {
+            title: "Virechana (Therapeutic Purgation)",
+            description:
+              "Virechana is a medicated purgation therapy that cleanses the gastrointestinal tract, liver, and gallbladder of Pitta-related toxins. It effectively treats skin diseases, jaundice, and digestive issues.",
+          },
+          basti: {
+            title: "Basti (Medicated Enema)",
+            description:
+              "Considered the mother of all Panchakarma treatments, Basti cleanses the colon of accumulated toxins. It balances Vata dosha and is highly effective for chronic constipation, sciatica, arthritis, and other joint disorders.",
+          },
+          nasya: {
+            title: "Nasya (Nasal Administration)",
+            description:
+              "Nasya involves administering medicated oils or powders through the nasal passage to cleanse Kapha toxins from the head and neck. It is highly effective for sinus issues, migraines, and certain eye and ear problems.",
+          },
+          raktamokshana: {
+            title: "Raktamokshana (Bloodletting)",
+            description:
+              "An effective blood purification therapy, Raktamokshana involves the controlled removal of small quantities of blood to neutralize accumulated toxins. It is beneficial for skin disorders such as urticaria, eczema, and acne.",
+          },
+        };
+
+        // 2. Get references to the HTML elements
+        const circles = document.querySelectorAll(".outer-circle");
+        const infoTitle = document.getElementById("info-title");
+        const infoDescription = document.getElementById("info-description");
+
+        // 3. Add event listeners to each circle
+        circles.forEach((circle) => {
+          // Blink effect on hover (mouseenter)
+          circle.addEventListener("mouseenter", function () {
+            this.style.backgroundColor = "#a3b18a";
+            this.style.color = "#ffffff";
+          });
+
+          // Revert blink effect on mouseleave
+          circle.addEventListener("mouseleave", function () {
+            this.style.backgroundColor = ""; // Reverts to stylesheet color
+            this.style.color = ""; // Reverts to stylesheet color
+          });
+
+          // Update info box on click
+          circle.addEventListener("click", function () {
+            const key = this.getAttribute("data-info");
+            const data = panchakarmaData[key];
+
+            if (data) {
+              infoTitle.textContent = data.title;
+              infoDescription.textContent = data.description;
+            }
+          });
+        });
+      });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const accordionHeaders = document.querySelectorAll(".accordion-header");
+
+        accordionHeaders.forEach((header) => {
+          header.addEventListener("click", function () {
+            // Toggle the 'active' class on the header
+            this.classList.toggle("active");
+
+            const icon = this.querySelector(".icon");
+            const content = this.nextElementSibling;
+
+            if (content.style.maxHeight) {
+              // If content is open, close it
+              content.style.maxHeight = null;
+              content.style.padding = "0 20px"; // Collapse padding
+              icon.textContent = "+";
+            } else {
+              // If content is closed, open it
+              // scrollHeight gives the actual height of the content
+              content.style.maxHeight = content.scrollHeight + "px";
+              icon.textContent = "-";
+            }
+          });
+        });
+      });
+    </script>
+
+    <script src="../static/script.js"></script>
+  </body>
+</html>
