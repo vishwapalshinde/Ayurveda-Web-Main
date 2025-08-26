@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: ayurveda-web
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:app"
+    branch: main
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.4
+
