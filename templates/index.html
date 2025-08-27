@@ -146,7 +146,9 @@
           Rooted in ancient wisdom, we welcome you to experience the healing
           touch of Ayurveda.
         </p>
-        <a href="#" class="btn">Make an Appointment</a>
+        <a href="#contact" class="btn" id="makeAppointmentBtn"
+          >Make an Appointment</a
+        >
       </div>
       <div class="hero-image-wrapper">
         <div class="hero-image">
@@ -160,6 +162,7 @@
     </section>
 
     <!-- About Section -->
+
     <section class="about" id="about-doctor">
       <div class="about-flex">
         <div class="about-img-col">
@@ -1150,5 +1153,20 @@
     </script>
 
     <script src="../static/script.js"></script>
+    <script>
+      // Smooth scroll to appointment form when Make Appointment is clicked
+      document.addEventListener("DOMContentLoaded", function () {
+        var btn = document.getElementById("makeAppointmentBtn");
+        if (btn) {
+          btn.addEventListener("click", function (e) {
+            var target = document.getElementById("contact");
+            if (target) {
+              e.preventDefault();
+              target.scrollIntoView({ behavior: "smooth" });
+            }
+          });
+        }
+      });
+    </script>
   </body>
 </html>
