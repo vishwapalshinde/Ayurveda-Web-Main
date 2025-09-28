@@ -19,7 +19,7 @@
         </div>
         <nav>
           <ul>
-            <li><a href="#">Home</a></li>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
             <li><a href="#">About Us</a></li>
             <li><a href="#">Services</a></li>
             <li><a href="#">Panchakarma</a></li>
@@ -138,7 +138,7 @@
 
         <!-- Back Button -->
         <div class="btn-container">
-          <a href="index.html" class="view-btn">← Back to Home</a>
+           <a href="{{ url_for('home') }}" class="view-btn">← Back to Home</a>
         </div>
 
          <footer class="site-footer">
@@ -169,7 +169,7 @@
         <div class="footer-column">
           <h3>Quick Links</h3>
           <ul>
-            <li><a href="#">Home</a></li>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
             <li><a href="#">About Us</a></li>
             <li><a href="#">Contact Us</a></li>
             <li><a href="#">Disclaimer</a></li>
