@@ -19,13 +19,13 @@
         </div>
         <nav>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Panchakarma</a></li>
-            <li><a href="#">Products</a></li>
-            <li><a href="#">Blogs</a></li>
-            <li><a href="#">Contact Us</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/#about">About Us</a></li>
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/#panchakarma">Panchakarma</a></li>
+            <li><a href="/#products">Products</a></li>
+            <li><a href="/#gallery">Gallery</a></li>
+            <li><a href="/#contact">Contact Us</a></li>
           </ul>
         </nav>
       </div>
@@ -118,10 +118,10 @@
     Restores peace of mind and focus.</p>
   </div>
 
-  <!-- PCOD & Women’s Health -->
+  <!-- PCOD & Women's Health -->
   <div class="treatment-card">
             <img src="../static/images/pcod.jpg" alt="PCOD" />
-    <h3>PCOD & Women’s Health</h3>
+    <h3>PCOD & Women's Health</h3>
     <p>Supports hormonal balance and menstrual health.<br>
     Effective in PCOD, infertility, and wellness.</p>
   </div>
@@ -138,7 +138,7 @@
 
         <!-- Back Button -->
         <div class="btn-container">
-          <a href="index.html" class="view-btn">← Back to Home</a>
+          <a href="/" class="view-btn">← Back to Home</a>
         </div>
 
          <footer class="site-footer">
@@ -161,19 +161,19 @@
         <div class="footer-column">
           <h3>Products</h3>
           <ul>
-            <li><a href="#">Suvarna Prashan</a></li>
-            <li><a href="#">Chavan Prash</a></li>
+            <li><a href="/#products">Suvarna Prashan</a></li>
+            <li><a href="/#products">Chavan Prash</a></li>
           </ul>
         </div>
 
         <div class="footer-column">
           <h3>Quick Links</h3>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">Disclaimer</a></li>
-            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/#about">About Us</a></li>
+            <li><a href="/#services">Services</a></li>
+            <li><a href="/#products">Products</a></li>
+            <li><a href="/#contact">Contact Us</a></li>
             <li><a href="#">Terms & Conditions</a></li>
           </ul>
         </div>
@@ -190,6 +190,70 @@
       </div>
     </footer>
 
-      
+    <script>
+      // Mobile hamburger menu for treatments page
+      document.addEventListener("DOMContentLoaded", function () {
+        const nav = document.querySelector("nav");
+        
+        // Add hamburger button dynamically if needed
+        if (nav && !document.getElementById("hamburger")) {
+          const hamburgerBtn = document.createElement("button");
+          hamburgerBtn.className = "hamburger";
+          hamburgerBtn.id = "hamburger";
+          hamburgerBtn.setAttribute("aria-label", "Open navigation");
+          hamburgerBtn.setAttribute("aria-expanded", "false");
+          hamburgerBtn.innerHTML = "<span></span><span></span><span></span>";
+          
+          nav.parentNode.insertBefore(hamburgerBtn, nav);
+          nav.id = "mainNav";
+          
+          hamburgerBtn.addEventListener("click", function () {
+            hamburgerBtn.classList.toggle("active");
+            nav.classList.toggle("open");
+            const expanded = hamburgerBtn.getAttribute("aria-expanded") === "true";
+            hamburgerBtn.setAttribute("aria-expanded", !expanded);
+          });
+          
+          // Close nav when clicking a link (mobile UX)
+          nav.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", function () {
+              if (window.innerWidth <= 900) {
+                hamburgerBtn.classList.remove("active");
+                nav.classList.remove("open");
+                hamburgerBtn.setAttribute("aria-expanded", "false");
+              }
+            });
+          });
+          
+          function handleResize() {
+            if (window.innerWidth > 900) {
+              nav.classList.remove("open");
+              hamburgerBtn.classList.remove("active");
+              hamburgerBtn.setAttribute("aria-expanded", "false");
+            }
+          }
+          window.addEventListener("resize", handleResize);
+          handleResize();
+        }
+        
+        // Handle cross-page navigation to sections
+        document.addEventListener('click', function(e) {
+          const link = e.target.closest('a');
+          if (link && link.href.includes('/#')) {
+            e.preventDefault();
+            const targetSection = link.href.split('/#')[1];
+            
+            // Store target section for scrolling after page load
+            if (targetSection) {
+              sessionStorage.setItem('scrollToSection', targetSection);
+            }
+            
+            // Navigate to home page
+            window.location.href = '/';
+          }
+        });
+      });
+    </script>
+
   </body>
 </html>

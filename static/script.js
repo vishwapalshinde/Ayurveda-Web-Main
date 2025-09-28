@@ -28,12 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// Ensure gallery is correct on window resize
-window.addEventListener('resize', updateGallery);
-// Initial update
-updateGallery();
-
-
 // Accordion Functionality
 document.querySelectorAll(".accordion-header").forEach(button => {
   button.addEventListener("click", () => {
@@ -67,62 +61,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-
-
-    // document.addEventListener('DOMContentLoaded', function () {
-    //     const carousel = document.querySelector('.testimonial-carousel');
-    //     const prevBtn = document.querySelector('.prev-btn');
-    //     const nextBtn = document.querySelector('.next-btn');
-
-    //     nextBtn.addEventListener('click', () => {
-    //         carousel.scrollBy({ left: carousel.offsetWidth, behavior: 'smooth' });
-    //     });
-
-    //     prevBtn.addEventListener('click', () => {
-    //         carousel.scrollBy({ left: -carousel.offsetWidth, behavior: 'smooth' });
-    //     });
-    // });
-
-    
-  // const testimonials = [
-  //   {
-  //     name: "Meghna Patil",
-  //     role: "Patient",
-  //     text: "Excellent results for weight loss management by medicines and panchakarma therapy... will recommend to all. Do visit the clinic for all types of diseases. Polite staff and proper cleanliness in clinic..."
-  //   },
-  //   {
-  //     name: "Jay S. Singh",
-  //     role: "Patient",
-  //     text: "Excellent medications to all the treatments... Very good nadi parikshan and prakruti parikshan by doctor. Must visit who needs ayurveda treatments."
-  //   },
-  //   {
-  //     name: "Ankita Sharma",
-  //     role: "Patient",
-  //     text: "I had an amazing experience with panchakarma therapy. Feeling more energetic and balanced in life. Highly recommended!"
-  //   }
-  // ];
-
-  // let index = 0;
-  // const nameEl = document.getElementById("testimonial-name");
-  // const roleEl = document.querySelector(".role");
-  // const textEl = document.getElementById("testimonial-text");
-  // const nextBtn = document.getElementById("nextTestimonial");
-
-  // function setTestimonial(idx) {
-  //   nameEl.textContent = testimonials[idx].name;
-  //   roleEl.textContent = testimonials[idx].role;
-  //   textEl.textContent = testimonials[idx].text;
-  // }
-
-  // // Set initial testimonial on page load
-  // setTestimonial(index);
-
-  // nextBtn.addEventListener("click", () => {
-  //   index = (index + 1) % testimonials.length;
-  //   setTestimonial(index);
-  // });
-
-
   document.addEventListener("DOMContentLoaded", () => {
     const accordions = document.querySelectorAll(".accordion-header");
 
@@ -146,3 +84,139 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+/* ================================= */
+/* Panchakarma Animation Logic      */
+/* ================================= */
+document.addEventListener("DOMContentLoaded", () => {
+    const panchakarmaSection = document.getElementById('panchakarma');
+    if (!panchakarmaSection) return; // Exit if the section isn't on the page
+
+    const circles = panchakarmaSection.querySelectorAll('.outer-circle');
+    const infoTitle = panchakarmaSection.querySelector('#info-title');
+    const infoDescription = panchakarmaSection.querySelector('#info-description');
+
+    // Data for each therapy
+    const panchakarmaData = {
+        vamana: {
+            title: "Vamana (Therapeutic Emesis)",
+            description: "Vamana is a medicated emesis therapy that removes Kapha toxins collected in the body. It is used to treat chronic indigestion, asthma, and skin disorders like psoriasis.",
+        },
+        virechana: {
+            title: "Virechana (Therapeutic Purgation)",
+            description: "Virechana is a medicated purgation therapy that cleanses the gastrointestinal tract, liver, and gallbladder of Pitta-related toxins. It effectively treats skin diseases and jaundice.",
+        },
+        basti: {
+            title: "Basti (Medicated Enema)",
+            description: "Considered the mother of all Panchakarma treatments, Basti cleanses the colon of accumulated toxins. It balances Vata dosha and is highly effective for chronic constipation and arthritis.",
+        },
+        nasya: {
+            title: "Nasya (Nasal Administration)",
+            description: "Nasya involves administering medicated oils through the nasal passage to cleanse Kapha toxins from the head and neck, effective for sinus issues, migraines, and certain eye problems.",
+        },
+        raktamokshana: {
+            title: "Raktamokshana (Bloodletting)",
+            description: "An effective blood purification therapy, Raktamokshana involves the controlled removal of small quantities of blood to neutralize accumulated toxins and treat skin disorders like eczema.",
+        },
+    };
+
+    let currentIndex = 0;
+    let intervalId = null;
+    let userInteracted = false;
+    const cycleDuration = 5000; // 5 seconds
+
+    function updateDisplay(index) {
+        circles.forEach(circle => circle.classList.remove('blinking'));
+        const activeCircle = circles[index];
+        if (activeCircle) {
+            activeCircle.classList.add('blinking');
+            const key = activeCircle.getAttribute('data-info');
+            const data = panchakarmaData[key];
+            if (data) {
+                infoTitle.textContent = data.title;
+                infoDescription.textContent = data.description;
+            }
+        }
+    }
+
+    function startCycle() {
+        clearInterval(intervalId); // Clear previous cycle before starting a new one
+        userInteracted = false;
+        currentIndex = 0;
+        
+        updateDisplay(currentIndex); // Show the first item immediately
+
+        intervalId = setInterval(() => {
+            if (userInteracted) {
+                clearInterval(intervalId);
+                return;
+            }
+            currentIndex = (currentIndex + 1) % circles.length;
+            updateDisplay(currentIndex);
+        }, cycleDuration);
+    }
+    
+    function stopCycle() {
+        userInteracted = true;
+        clearInterval(intervalId);
+    }
+
+    circles.forEach((circle, index) => {
+        circle.addEventListener('click', () => {
+            stopCycle();
+            currentIndex = index;
+            updateDisplay(index);
+        });
+    });
+
+    // --- Intersection Observer to control the animation ---
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Section is in view: start the animation
+                startCycle();
+            } else {
+                // Section is out of view: stop the animation
+                stopCycle();
+            }
+        });
+    }, { threshold: 0.1 }); // Starts when 10% of the section is visible
+
+    // Tell the observer to watch the Panchakarma section
+    observer.observe(panchakarmaSection);
+});
+
+
+/* ================================================== */
+/* NEW: JavaScript for "Our Services" Carousel Buttons */
+/* ================================================== */
+document.addEventListener("DOMContentLoaded", function () {
+  const servicesCarousel = document.querySelector("#services .carousel");
+
+  // Only run the script if the services carousel exists on the page
+  if (servicesCarousel) {
+    const prevBtn = document.querySelector("#services .carousel-btn.prev");
+    const nextBtn = document.querySelector("#services .carousel-btn.next");
+    const firstCard = servicesCarousel.querySelector(".service-card");
+
+    // Exit if there are no cards
+    if (!firstCard) return;
+
+    // Function to calculate how far to scroll
+    const getScrollAmount = () => {
+      const cardWidth = firstCard.offsetWidth;
+      // Get the gap value from the CSS
+      const gap = parseInt(window.getComputedStyle(servicesCarousel).gap) || 20;
+      return cardWidth + gap;
+    };
+
+    // Add click event for the "next" button
+    nextBtn.addEventListener("click", function () {
+      servicesCarousel.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
+    });
+
+    // Add click event for the "previous" button
+    prevBtn.addEventListener("click", function () {
+      servicesCarousel.scrollBy({ left: -getScrollAmount(), behavior: "smooth" });
+    });
+  }
+});

@@ -1,199 +1,58 @@
-.bottom-footer a {
-  color: #fff !important;
-  /* Responsive */
-/* =================================== */
-/* Mobile Styles (Max-width: 768px)    */
-/* =================================== */
-@media (max-width: 768px) {
-  /* --- Service Card Carousel --- */
-
-  .carousel-wrapper {
-    max-width: 100%; /* Use 100% instead of 100vw to avoid scrollbar issues */
-    overflow: hidden;
-  }
-
-  .carousel {
-    display: flex; /* Using flex for modern carousels */
-    width: 100%;
-    /* Remove padding and gap for single-item view */
-    padding: 0;
-    gap: 0;
-  }
-
-  .service-card {
-    min-width: 100%; /* Each card takes full width */
-    flex-shrink: 0;
-    margin: 0;
-    border-radius: 0;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    /* Hiding/showing cards is better handled by JS scroll or transform */
-    /* display: none; */
-  }
-
-  /* Assumes JS handles scrolling to the active card */
-  /* .service-card.active { display: block; } */
-
-  .service-img-info,
-  .service-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-  }
-
-  .service-info {
-    padding: 0 16px 8px 16px;
-    box-sizing: border-box;
-    text-align: center;
-  }
-
-  .service-info h3 {
-    margin: 8px 0 4px 0;
-    font-size: 1.1rem;
-    color: #1b5e20;
-    font-weight: 700;
-  }
-
-  .service-info p {
-    font-size: 1.08rem;
-    color: #444;
-    margin: 0;
-    line-height: 1.7;
-    width: 90%; /* Use percentage of its container */
-  }
-
-  .carousel-btn.prev,
-  .carousel-btn.next {
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  .carousel-btn.prev { left: 10px; }
-  .carousel-btn.next { right: 10px; }
-
-
-  /* --- Other Mobile Styles (About, Doctor) --- */
-  /* Note: These seemed unrelated but are cleaned up here */
-
-  .about {
-    padding: 18px 0;
-    margin: 0;
-    width: 100%;
-    box-sizing: border-box;
-    overflow-x: hidden;
-  }
-  
-  .about-flex {
-    flex-direction: column;
-    gap: 12px;
-    align-items: center;
-    width: 100%;
-    margin: 0;
-  }
-  
-  .about-img-col, 
-  .about-text-col {
-    width: 100%;
-    max-width: 420px;
-    margin: 0 auto;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .about-img {
-    width: 120px;
-    max-width: 90%; /* Use % for better scaling */
-    margin: 0 auto 10px auto;
-    box-shadow: 0 2px 8px rgba(60, 120, 60, 0.10);
-  }
-  
-  .about-text-col {
-    padding: 10px 8px;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 10px;
-    box-shadow: 0 1px 4px 0 rgba(60, 120, 60, 0.06);
-  }
-
-  .about-text-col h2 { font-size: 18px; margin-bottom: 6px; }
-  .about-text-col h3 { font-size: 15px; margin-bottom: 10px; }
-  .about-text-col p { font-size: 13px; line-height: 1.5; margin: 0; }
-  
-  .doctor-contact p { font-size: 12px; margin-bottom: 4px; word-break: break-word; }
-  .doctor-contact a { font-size: 12px; word-break: break-all; }
+/* === Basic CSS Reset === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* Prevents accidental horizontal scrolling */
+}
 
-/* ====================================== */
-/* Desktop Styles (Min-width: 769px)      */
-/* ====================================== */
-/* ====================================== */
-/* Desktop Styles (Min-width: 769px)      */
-/* ====================================== */
+.bottom-footer a {
+  color: #fff !important;
+}
+
+/* ================================================= */
+/* FINAL FIX: Move Arrows Outside of the Card Area   */
+/* ================================================= */
 @media (min-width: 769px) {
-  .carousel-wrapper {
-    max-width: 1000px;
+  /* This targets the main wrapper for the carousel */
+  #services .carousel-wrapper {
+    /* 1. Widen the wrapper to make room for arrows on the sides */
+    max-width: 1020px;
+    
+    /* 2. Add 40px of padding on the left/right for the arrows to sit in */
+    padding: 0 40px;
+    box-sizing: border-box; /* Ensures padding is included in the total width */
+
     margin: 0 auto;
-    overflow: hidden;
     position: relative;
   }
 
-  .carousel {
-    display: flex;
-    gap: 20px;
-    padding: 10px;
-    width: 100%;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
+  /* The scrollable area no longer needs extra padding or specific width */
+  #services .carousel {
+    overflow: hidden; /* This correctly hides the 4th card now */
   }
 
-  .service-card {
-    flex-basis: 300px;
-    flex-shrink: 0;
-    width: 300px;
-    max-width: 300px;
-    min-width: 300px;
-    min-height: 420px;
-    max-height: 420px;
-    height: 420px;
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    align-items: stretch;
-  }
-
-  /* --- NEW RULE TO MANAGE INNER CONTENT --- */
-  .service-img-info {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1; /* Allows the content to fill the card's height */
-  }
-
-  .carousel-btn.prev {
-    left: -50px;
-  }
-
-  .carousel-btn.next {
-    right: -50px;
-  }
-
-  .carousel-btn.prev,
-  .carousel-btn.next {
+  /* 3. This positions the "previous" arrow in the new empty space */
+  #services .carousel-btn.prev {
+    left: 2px; /* Position arrow within the left padding */
     top: 50%;
     transform: translateY(-50%);
+    z-index: 10;
+  }
+
+  /* 4. This positions the "next" arrow in the new empty space */
+  #services .carousel-btn.next {
+    right: 15px; /* Position arrow within the right padding */
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
   }
 }
-    .treatments-btn {
-        font-size: 15px;
-        padding: 10px 18px;
-    }
-}
+
 
 @media (max-width: 480px) {
     .hero-content h1 {
@@ -348,13 +207,59 @@
   margin-bottom: 40px;
 }
 
+
+/* Treatments Section */
 .treatment-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px; /* Reduced gap between cards */
+  gap: 20px; /* default for all other pages */
   justify-items: center;
   margin-bottom: 30px;
 }
+
+
+
+@media (min-width: 769px) {
+  .treatments .treatment-grid {
+    gap: 8px; /* slightly smaller gap for desktop screens */
+  }
+}
+/* Increase the width of homepage treatment cards */
+.treatments:not(.all-treatments) .treatment-card {
+  max-width: 350px; /* Increased from 300px. You can adjust this value. */
+}
+
+/* .treatment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px; 
+  justify-items: center;
+  margin-bottom: 30px;
+} */
+
+/* --- Layout for "View All Treatments" Page --- */
+
+/* Desktop: 4 cards per row */
+@media (min-width: 1024px) {
+  .treatments.all-treatments .treatment-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Tablet: 2 cards per row */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .treatments.all-treatments .treatment-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile: 1 card per row */
+@media (max-width: 767px) {
+  .treatments.all-treatments .treatment-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 .treatment-card {
   background: #fff;
@@ -781,7 +686,112 @@ nav a {
 
 /* About Section */
 /* About Section */
-.about {
+
+/* =================================== */
+/* Updated About Doctor Section Styles */
+/* =================================== */
+
+.about-doctor-section {
+    padding: 60px 20px;
+    background-color: #fcfcfc; /* Clean, almost white background */
+}
+
+.about-doctor-container {
+    display: flex;
+    align-items: center;
+    max-width: 1050px;
+    margin: auto;
+    background-color: #ffffff;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+    border: 1px solid #f0f0f0;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.doctor-info-text {
+    flex: 1.1; /* Give slightly more space to text */
+    padding: 40px 50px;
+}
+
+.doctor-icon {
+    width: 60px;
+    height: 60px;
+    background-color: #e3f2fd; /* Light blue background */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    color: #1e88e5; /* A matching blue for the icon */
+}
+
+.doctor-name-title {
+    font-size: 1.9rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.doctor-degree {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.doctor-description {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #666;
+    margin-bottom: 35px;
+}
+
+.btn-read-more {
+    padding: 12px 30px;
+    background-color: #8B4513; /* A warm, sienna brown */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-read-more:hover {
+    background-color: #7A3C10; /* Darker shade on hover */
+    transform: translateY(-2px);
+}
+
+.doctor-image-wrapper {
+    flex: 0.9;
+    align-self: stretch; 
+}
+
+.doctor-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This prevents the image from being distorted */
+}
+
+/* Make it responsive for smaller screens */
+@media (max-width: 900px) {
+    .about-doctor-container {
+        flex-direction: column;
+    }
+    .doctor-info-text {
+        padding: 40px 30px;
+        text-align: center;
+    }
+    .doctor-icon {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* .about {
     padding: 50px 5%;
     background: linear-gradient(120deg, #e6f4d5 60%, #c4e4a8 100%);
     border-radius: 18px;
@@ -807,7 +817,7 @@ nav a {
     border-radius: 18px;
     box-shadow: 0 6px 32px 0 rgba(60, 120, 60, 0.13);
     object-fit: cover;
-    /* This line moves the image 30px to the left */
+    
     transform: translateX(-30px);
 }
 .about-text-col {
@@ -834,7 +844,7 @@ nav a {
     color: #333;
     margin-bottom: 0;
     line-height: 1.7;
-}
+} */
 
 /* New styles for Doctor's contact info */
 .doctor-contact {
@@ -910,8 +920,60 @@ nav a {
   gap: 20px;
   padding: 10px;
 }
+/* --- Our Services Uniform Card Fix --- */
+#services .service-card {
+  flex-basis: 300px;
+  flex-shrink: 0;
+  width: 300px;
+  height: 400px; /* Fixed consistent height */
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  box-sizing: border-box;
+}
 
-.service-card {
+/* Ensure image is uniform */
+#services .service-card img {
+  width: 100%;
+  height: 160px;   /* fixed */
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 15px;
+  flex-shrink: 0;
+}
+
+/* Title height fixed */
+#services .service-card h3 {
+  font-size: 1.2rem;
+  color: #1b5e20;
+  min-height: 50px; /* ensures equal space for 1-2 lines */
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Paragraph text aligned */
+#services .service-card p {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.4;
+  margin: 0;
+  padding: 0 4px;
+  flex-grow: 1; /* stretch to fill available space */
+  display: flex;
+  align-items: center; /* vertical centering */
+  justify-content: center;
+  text-align: center;
+}
+
+/* .service-card {
   min-width: 0;
   max-width: 100vw;
   background: #fff;
@@ -921,13 +983,13 @@ nav a {
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
-}
+} */
 .service-card:hover {
   transform: translateY(-10px) scale(1.03);
   box-shadow: 0 6px 18px rgba(0,0,0,0.2);
 }
 
-.service-card img {
+/* .service-card img {
   width: 100%;
   height: 160px;
   border-radius: 10px;
@@ -949,7 +1011,7 @@ nav a {
   word-break: break-word;
   white-space: normal;
   overflow-wrap: break-word;
-}
+} */
 
 .carousel-btn {
   background: #2e7d32;
@@ -973,156 +1035,7 @@ nav a {
   right: -50px;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .service-info h3, .service-info p {
-    word-break: break-word !important;
-    white-space: normal !important;
-    overflow-wrap: break-word !important;
-    text-align: center !important;
-    padding-left: 16px !important;
-    padding-right: 16px !important;
-    box-sizing: border-box !important;
-    width: 100% !important;
-    max-width: 100vw !important;
-    font-size: 1.08rem !important;
-    line-height: 1.7 !important;
-  }
-  .service-img-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-  }
-  .service-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 0;
-  }
-  .service-info h3 {
-    margin: 8px 0 4px 0 !important;
-    font-size: 1.1rem !important;
-    color: #1b5e20 !important;
-    font-weight: 700;
-    text-align: center;
-  }
-  .service-info p {
-    font-size: 1.08rem !important;
-    color: #444 !important;
-    margin: 0 0 0 0 !important;
-    text-align: center !important;
-    line-height: 1.7 !important;
-    padding: 0 16px 8px 16px !important;
-    width: 80% !important;
-    box-sizing: border-box !important;
-  }
-  .carousel-btn.prev, .carousel-btn.next {
-    top: 50% !important;
-    transform: translateY(-50%);
-  }
-  .about {
-    padding: 18px 0 18px 0 !important;
-    margin: 0 !important;
-    width: 100vw !important;
-    box-sizing: border-box !important;
-    overflow-x: hidden !important;
-  }
-  .about-flex {
-    flex-direction: column !important;
-    gap: 12px !important;
-    align-items: center !important;
-    width: 100vw !important;
-    margin: 0 !important;
-    box-sizing: border-box !important;
-  }
-  .about-img-col, .about-text-col {
-    width: 100vw !important;
-    max-width: 420px !important;
-    margin: 0 auto !important;
-    padding: 0 0 0 0 !important;
-    box-sizing: border-box !important;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .about-img {
-    width: 120px !important;
-    max-width: 90vw !important;
-    margin: 0 auto 10px auto !important;
-    display: block;
-    box-shadow: 0 2px 8px rgba(60,120,60,0.10);
-  }
-  .about-text-col {
-    padding: 10px 8px !important;
-    text-align: center !important;
-    font-size: 14px !important;
-    background: rgba(255,255,255,0.95) !important;
-    border-radius: 10px !important;
-    box-shadow: 0 1px 4px 0 rgba(60,120,60,0.06) !important;
-  }
-  .about-text-col h2 {
-    font-size: 18px !important;
-    margin-bottom: 6px !important;
-  }
-  .about-text-col h3 {
-    font-size: 15px !important;
-    margin-bottom: 10px !important;
-  }
-  .about-text-col p {
-    font-size: 13px !important;
-    margin-bottom: 0 !important;
-    line-height: 1.5 !important;
-  }
-  .doctor-contact p {
-    font-size: 12px !important;
-    margin-bottom: 4px !important;
-    word-break: break-word;
-  }
-  .doctor-contact a {
-    font-size: 12px !important;
-    word-break: break-all;
-  }
-}
-  @media (max-width: 768px) {
-    .carousel {
-      gap: 0;
-      padding: 0;
-      width: 100vw;
-      overflow: hidden;
-    }
-    .service-card {
-      min-width: 100vw;
-      max-width: 100vw;
-      margin: 0;
-      border-radius: 0;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      display: none;
-    }
-    .service-card.active {
-      display: block;
-    }
-    .carousel-btn.prev {
-      left: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-    .carousel-btn.next {
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-    .carousel-wrapper {
-      max-width: 100vw;
-      overflow: hidden;
-    }
-  }
-
-
+/* Our Products Section */
 /* Our Products Section */
 #products {
   padding: 60px 20px;
@@ -1462,9 +1375,9 @@ nav a {
   background: #fff;
   border-radius: 12px;
   box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.15);
-  max-width: 700px;
+  max-width: 850px;
   margin: 0 auto;
-  padding: 40px 30px;
+  padding: 40px 50px;
   text-align: left;
 }
 
@@ -1486,14 +1399,14 @@ nav a {
 }
 
 .testimonial-content p {
-  font-size: 1rem;
+  font-size: 1.05rem;
   color: #444;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .next-btn {
   position: absolute;
-  right: -25px;
+  right: -30px;
   top: 50%;
   transform: translateY(-50%);
   background: #7b2cbf;
@@ -1511,6 +1424,26 @@ nav a {
   background: #5a189a;
 }
 
+.prev-btn {
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #7b2cbf;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+.prev-btn:hover {
+  background: #5a189a;
+}
+
 
 
 /* Gallery Section */
@@ -1524,13 +1457,13 @@ nav a {
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
   position: relative;
 }
 
 .gallery-wrapper {
-  width: 80%; /* only 3 images visible */
+  width: 90%; /* only 3 images visible */
   overflow: hidden;
 }
 
@@ -1541,6 +1474,8 @@ nav a {
 
 .gallery-images img {
   width: calc(100% / 3); /* 3 images at a time */
+  height: 280px; /* Fixed height to maintain consistency */
+  object-fit: cover; /* Maintain aspect ratio and cover the area */
   border-radius: 10px;
   margin: 5px;
   flex-shrink: 0;
@@ -1559,6 +1494,22 @@ nav a {
 
 .gallery-btn:hover {
   background: #45a049;
+}
+
+/* Responsive gallery styles */
+@media (max-width: 768px) {
+  .gallery-images img {
+    height: 180px; /* Smaller height on mobile */
+  }
+  .gallery-wrapper {
+    width: 90%; /* Wider on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-images img {
+    height: 150px; /* Even smaller on very small screens */
+  }
 }
 
 
@@ -1628,8 +1579,8 @@ nav a {
 
 .outer-circle {
     position: absolute;
-    width: 140px; /* Increased size */
-    height: 140px; /* Increased size */
+    width: 140px;
+    height: 140px;
     background: #ffffff;
     border: 2px solid #588157;
     color: #3a5a40;
@@ -1637,11 +1588,12 @@ nav a {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    font-size: 16px; /* Increased font size */
+    font-size: 16px;
     text-align: center;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+    /* UPDATE THIS LINE */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Positioning for the larger outer circles */
@@ -1678,6 +1630,28 @@ nav a {
     line-height: 1.7;
     margin: 0;
 }
+
+/* Blink effect */
+@keyframes blink {
+  0%   { background-color: #fff; color: #2c3d10; }
+  50%  { background-color: #2c3d10; color: #fff; }
+  100% { background-color: #fff; color: #2c3d10; }
+}
+
+/* Highlight style for the active circle (Appearance only) */
+.outer-circle.blinking {
+  background-color: #4cb04f;
+  color: #ffffff;
+  border-color: #4cb04f;
+  box-shadow: 0 0 15px rgba(76, 176, 79, 0.5);
+}
+
+/* --- Combine transforms to keep circles in place when blinking --- */
+.top.blinking { transform: translate(0, -180px) scale(1.05); }
+.right.blinking { transform: translate(155px, -55px) scale(1.05); }
+.bottom-right.blinking { transform: translate(95px, 140px) scale(1.05); }
+.bottom-left.blinking { transform: translate(-95px, 140px) scale(1.05); }
+.left.blinking { transform: translate(-155px, -55px) scale(1.05); }
 
 
 
@@ -1938,6 +1912,8 @@ nav a {
 }
 
 
+
+
 /* =================================== */
 /* Responsive Styles for Mobile        */
 /* =================================== */
@@ -2000,5 +1976,63 @@ nav a {
   }
   .left {
     transform: translate(-110px, -40px);
+  }
+}
+
+/* ================================================= */
+/* FIX: Reposition Desktop Services Carousel Buttons */
+/* ================================================= */
+@media (min-width: 769px) {
+  #services .carousel-btn.prev {
+    left: 10px; /* Changed from -50px to bring it inside the view */
+    z-index: 10;
+  }
+
+  #services .carousel-btn.next {
+    right: 10px; /* Changed from -50px to bring it inside the view */
+    z-index: 10;
+  }
+}
+
+/* =============================================== */
+/* NEW: Responsive Services Carousel for Mobile    */
+/* =============================================== */
+@media (max-width: 768px) {
+  #services .carousel {
+    /* Enable smooth scrolling and snapping on mobile */
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    
+    /* Hide the scrollbar for a cleaner look */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  #services .carousel::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
+  }
+
+  #services .service-card {
+    /* Make each card take up most of the screen width */
+    flex-basis: 90%;
+    width: 90%;
+    scroll-snap-align: center; /* Snap cards to the center */
+  }
+
+  /* Adjust button appearance for mobile */
+  #services .carousel-btn {
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 8px 12px;
+    font-size: 1.8rem;
+    background-color: rgba(46, 125, 50, 0.75); /* Slightly transparent */
+  }
+
+  #services .carousel-btn.prev {
+    left: 5px; /* Position button on the left edge */
+  }
+
+  #services .carousel-btn.next {
+    right: 5px; /* Position button on the right edge */
   }
 }

@@ -146,7 +146,9 @@
           Rooted in ancient wisdom, we welcome you to experience the healing
           touch of Ayurveda.
         </p>
-        <a href="#" class="btn">Make an Appointment</a>
+        <a href="#contact" class="btn" id="makeAppointmentBtn"
+          >Make an Appointment</a
+        >
       </div>
       <div class="hero-image-wrapper">
         <div class="hero-image">
@@ -161,27 +163,60 @@
 
     <!-- About Section -->
 
-    <section class="about" id="about-doctor">
+    <!-- About Doctor Section -->
+    <section class="about-doctor-section" id="about">
+      <div class="about-doctor-container">
+        <div class="doctor-info-text">
+          <div class="doctor-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              fill="currentColor"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+              />
+            </svg>
+          </div>
+          <h2 class="doctor-name-title">DR. KAILAS MARUTI NARALE</h2>
+          <p class="doctor-degree">B.A.M.S.</p>
+          <p class="doctor-description">
+            Dedicated Ayurvedic Physician with 8+ years experience in diagnosing
+            and treating patients using Holistic and traditional method. Skilled
+            in Panchkarm treatment. Ayurved medicine, diet, committed to patient
+            wellness and restoring balance through natural therapies.
+          </p>
+          <button class="btn-read-more">READ MORE</button>
+        </div>
+        <div class="doctor-image-wrapper">
+          <img
+            src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=870&auto=format&fit=crop"
+            alt="Dr. Kailas Maruti Narale"
+            class="doctor-image"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- <section class="about" id="about-doctor">
       <div class="about-flex">
         <div class="about-img-col">
           <img
             src="../static/images/reallife-image-capturing-mission-ayurvedic-600nw-2565660415.webp"
-            alt="Dr. Kailas Narde - Ayurvedic Physician"
+            alt="Dr. Kailas Narale - Ayurvedic Physician"
             class="about-img"
           />
         </div>
         <div class="about-text-col">
           <h2>ABOUT THE DOCTOR</h2>
-          <h3>Dr. Kailas Maruti Narde, B.A.M.S.</h3>
+          <h3>Dr. kailas Maruti Narale, B.A.M.S.</h3>
           <p>
-            A dedicated Ayurvedic Physician with over 8 years of experience, Dr.
-            Narde specializes in diagnosing and treating patients using holistic
-            and traditional methods. He is committed to restoring balance and
-            promoting patient wellness through natural therapies.
-            <br /><br />
-            Highly skilled in Panchakarma treatments, Ayurvedic medicine, and
-            personalized diet plans, his approach focuses on treating the root
-            cause of ailments to empower you to achieve lasting health.
+            Dedicated Ayurvedic Physician with 8+ year experience in diagnosing
+            and treating patients using Holistic and traditional method. Skilled
+            in Panchkarm treatment. Ayurved medicine, diet, committed to patient
+            wellness and restoring balance through natural therapies.
           </p>
           <div class="doctor-contact">
             <p>
@@ -190,18 +225,18 @@
             </p>
             <p>
               <strong>Contact:</strong>
-              <a href="tel:+919822044945">9822044945</a>
+              <a href="tel:+919822944945">9822944945</a>
             </p>
             <p>
               <strong>Email:</strong>
-              <a href="mailto:kailasnarade99@gmail.com"
-                >kailasnarade99@gmail.com</a
+              <a href="mailto:Kailasnarale99@gmail.com"
+                >Kailasnarale99@gmail.com</a
               >
             </p>
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
     <!-- <section class="about" id="about">
       <div class="about-flex">
         <div class="about-img-col">
@@ -283,7 +318,7 @@
 
         <!-- Button (Redirects to new page instead of expanding) -->
         <div class="btn-container">
-          <a href="{{ url_for('treatments') }}" class="view-btn"
+          <a href="treatments.html" class="view-btn"
             >View All Treatments</a
           >
         </div>
@@ -301,7 +336,11 @@
             <!-- Service 1 -->
             <div class="service-card">
               <div class="service-img-info">
-                <img src="../static/images/panchakarma.jpg" alt="Panchakarma" />
+                <img
+                  src="../static/images/Panchakarma.jpg"
+                  alt="Panchakarma"
+                  onerror="this.onerror=null;this.src='../static/images/Panchakarma.jpg';"
+                />
                 <div class="service-info">
                   <h3>पंचकर्म</h3>
                   <p>
@@ -410,8 +449,11 @@
 
           <!-- Product 2 -->
           <div class="product-card">
-            <img src="../static/images/triphala.jpg" alt="Triphala Powder" />
-            <h3>Triphala Powder</h3>
+            <img
+              src="../static/images/dabur-chyawanprash-1kg_fc64708e-b85a-4984-ad52-9f678c7438de.jpeg"
+              alt="Chyawanprash"
+            />
+            <h3>Chyawanprash</h3>
             <!-- <button class="add-cart-btn">Add to Cart</button> -->
             <a
               href="https://wa.me/918999807775?text=I%20Would%20Like%20To%20Get%20An%20Appointment"
@@ -429,8 +471,11 @@
 
           <!-- Product 4 -->
           <div class="product-card">
-            <img src="../static/images/tulsi.jpg" alt="Tulsi Drops" />
-            <h3>Tulsi Drops</h3>
+            <img
+              src="../static/images/suvarna-prashan-.jpeg"
+              alt="Suvarna Prashan"
+            />
+            <h3>Suvarna Prashan</h3>
             <!-- <button class="add-cart-btn">Add to Cart</button> -->
             <a
               href="https://wa.me/918999807775?text=I%20Would%20Like%20To%20Get%20An%20Appointment"
@@ -519,6 +564,7 @@
         <h2 class="testimonial-title">Transformative Ayurvedic Journey</h2>
 
         <div class="testimonial-box">
+          <button class="prev-btn" id="prevTestimonial">&#10094;</button>
           <div class="testimonial-content">
             <h3 id="testimonial-name">Meghna Patil</h3>
             <p class="role">Patient</p>
@@ -593,7 +639,7 @@
           </p>
         </div>
       </div>
-      <a href="#" class="btn treatments-btn">View All Treatments</a>
+      <a href="treatments.html" class="btn treatments-btn">View All Treatments</a>
     </section> -->
 
     <!-- Gallery section  -->
@@ -632,7 +678,6 @@
     <section id="panchakarma" class="panchakarma-section">
       <div class="section-title">
         <h2>The Five Therapies of Panchakarma</h2>
-        <p>Click on a therapy to learn more about it.</p>
       </div>
 
       <div class="panchakarma-container">
@@ -843,7 +888,7 @@
             alt="HERB VEDA LIFE Logo"
             class="footer-logo"
           />
-          <p class="tagline">Shri VishwaNiwas Clinic<br />NatureInEveryDrop</p>
+          <p class="tagline">Shri VishwaNiwas Clinic</p>
           <div class="social-icons">
             <!-- Add correct static image paths for social icons if available -->
             <!-- <a href="#"><img src="../static/images/facebook-icon.png" alt="Facebook" /></a> -->
@@ -855,10 +900,8 @@
         <div class="footer-column">
           <h3>Products</h3>
           <ul>
-            <li><a href="#">Shop</a></li>
-            <li><a href="#">Weight Loss</a></li>
-            <li><a href="#">Beauty Products</a></li>
-            <li><a href="#">Stamina Strength Products</a></li>
+            <li><a href="#">Suvarna Prashan</a></li>
+            <li><a href="#">Chavan Prash</a></li>
           </ul>
         </div>
 
@@ -871,8 +914,6 @@
             <li><a href="#">Disclaimer</a></li>
             <li><a href="#">Privacy Policy</a></li>
             <li><a href="#">Terms & Conditions</a></li>
-            <li><a href="#">Shipping & Delivery</a></li>
-            <li><a href="#">Refund & Return Policy</a></li>
           </ul>
         </div>
 
@@ -880,7 +921,7 @@
           <h3>Contact Us</h3>
           <ul class="contact-info">
             <li>📞 +91 9822944945</li>
-            <li>📞 +91 9595965710</li>
+
             <li>📧 kailasnarale99@gmail.com</li>
             <li>📍 Navrang Chowk, Near Shital Collection, Mangalvedha</li>
           </ul>
@@ -896,74 +937,6 @@
       </p>
     </div>
 
-    <script>
-      // Mobile-friendly carousel: only one service-card visible at a time
-      (function () {
-        const carousel = document.querySelector("#services .carousel");
-        const cards = carousel
-          ? Array.from(carousel.querySelectorAll(".service-card"))
-          : [];
-        const prevBtn = document.querySelector("#services .prev");
-        const nextBtn = document.querySelector("#services .next");
-        let current = 0;
-        let desktopIndex = 0;
-        const cardsPerView = 3;
-
-        function updateCarousel() {
-          if (window.innerWidth <= 768) {
-            cards.forEach((card, i) => {
-              card.classList.toggle("active", i === current);
-            });
-          } else {
-            // Desktop: show only 3 cards at a time
-            cards.forEach((card, i) => {
-              card.style.display =
-                i >= desktopIndex && i < desktopIndex + cardsPerView
-                  ? "block"
-                  : "none";
-            });
-          }
-        }
-
-        if (cards.length) {
-          updateCarousel();
-          window.addEventListener("resize", updateCarousel);
-          if (nextBtn) {
-            nextBtn.addEventListener("click", () => {
-              if (window.innerWidth <= 768) {
-                current = (current + 1) % cards.length;
-                updateCarousel();
-              } else {
-                // Desktop: advance by 3, wrap if needed
-                if (desktopIndex + cardsPerView < cards.length) {
-                  desktopIndex += cardsPerView;
-                } else {
-                  desktopIndex = 0;
-                }
-                updateCarousel();
-              }
-            });
-          }
-          if (prevBtn) {
-            prevBtn.addEventListener("click", () => {
-              if (window.innerWidth <= 768) {
-                current = (current - 1 + cards.length) % cards.length;
-                updateCarousel();
-              } else {
-                // Desktop: go back by 3, wrap if needed
-                if (desktopIndex - cardsPerView >= 0) {
-                  desktopIndex -= cardsPerView;
-                } else {
-                  // Go to last full set or start
-                  desktopIndex = Math.max(0, cards.length - cardsPerView);
-                }
-                updateCarousel();
-              }
-            });
-          }
-        }
-      })();
-    </script>
     <script>
       const counters = document.querySelectorAll(".counter");
       const options = { threshold: 0.5 };
@@ -1015,6 +988,7 @@
       const roleEl = document.querySelector(".role");
       const textEl = document.getElementById("testimonial-text");
       const nextBtnm = document.getElementById("nextTestimonial");
+      const prevBtnm = document.getElementById("prevTestimonial");
 
       function setTestimonial(idx) {
         nameEl.textContent = testimonials[idx].name;
@@ -1027,6 +1001,11 @@
 
       nextBtnm.addEventListener("click", () => {
         index = (index + 1) % testimonials.length;
+        setTestimonial(index);
+      });
+
+      prevBtnm.addEventListener("click", () => {
+        index = (index - 1 + testimonials.length) % testimonials.length;
         setTestimonial(index);
       });
     </script>
@@ -1055,69 +1034,7 @@
         });
       });
     </script> -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // 1. Store the detailed information for each therapy
-        const panchakarmaData = {
-          vamana: {
-            title: "Vamana (Therapeutic Emesis)",
-            description:
-              "Vamana is a medicated emesis therapy that removes Kapha toxins collected in the body. It is used to treat chronic indigestion, asthma, and skin disorders like psoriasis, promoting better respiratory and digestive health.",
-          },
-          virechana: {
-            title: "Virechana (Therapeutic Purgation)",
-            description:
-              "Virechana is a medicated purgation therapy that cleanses the gastrointestinal tract, liver, and gallbladder of Pitta-related toxins. It effectively treats skin diseases, jaundice, and digestive issues.",
-          },
-          basti: {
-            title: "Basti (Medicated Enema)",
-            description:
-              "Considered the mother of all Panchakarma treatments, Basti cleanses the colon of accumulated toxins. It balances Vata dosha and is highly effective for chronic constipation, sciatica, arthritis, and other joint disorders.",
-          },
-          nasya: {
-            title: "Nasya (Nasal Administration)",
-            description:
-              "Nasya involves administering medicated oils or powders through the nasal passage to cleanse Kapha toxins from the head and neck. It is highly effective for sinus issues, migraines, and certain eye and ear problems.",
-          },
-          raktamokshana: {
-            title: "Raktamokshana (Bloodletting)",
-            description:
-              "An effective blood purification therapy, Raktamokshana involves the controlled removal of small quantities of blood to neutralize accumulated toxins. It is beneficial for skin disorders such as urticaria, eczema, and acne.",
-          },
-        };
 
-        // 2. Get references to the HTML elements
-        const circles = document.querySelectorAll(".outer-circle");
-        const infoTitle = document.getElementById("info-title");
-        const infoDescription = document.getElementById("info-description");
-
-        // 3. Add event listeners to each circle
-        circles.forEach((circle) => {
-          // Blink effect on hover (mouseenter)
-          circle.addEventListener("mouseenter", function () {
-            this.style.backgroundColor = "#a3b18a";
-            this.style.color = "#ffffff";
-          });
-
-          // Revert blink effect on mouseleave
-          circle.addEventListener("mouseleave", function () {
-            this.style.backgroundColor = ""; // Reverts to stylesheet color
-            this.style.color = ""; // Reverts to stylesheet color
-          });
-
-          // Update info box on click
-          circle.addEventListener("click", function () {
-            const key = this.getAttribute("data-info");
-            const data = panchakarmaData[key];
-
-            if (data) {
-              infoTitle.textContent = data.title;
-              infoDescription.textContent = data.description;
-            }
-          });
-        });
-      });
-    </script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         const accordionHeaders = document.querySelectorAll(".accordion-header");
@@ -1143,6 +1060,21 @@
             }
           });
         });
+      });
+    </script>
+    <script>
+      // Smooth scroll to appointment form when Make Appointment is clicked
+      document.addEventListener("DOMContentLoaded", function () {
+        var btn = document.getElementById("makeAppointmentBtn");
+        if (btn) {
+          btn.addEventListener("click", function (e) {
+            var target = document.getElementById("contact");
+            if (target) {
+              e.preventDefault();
+              target.scrollIntoView({ behavior: "smooth" });
+            }
+          });
+        }
       });
     </script>
 
