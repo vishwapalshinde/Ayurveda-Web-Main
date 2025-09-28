@@ -213,10 +213,21 @@
           <h2>ABOUT THE DOCTOR</h2>
           <h3>Dr. kailas Maruti Narale, B.A.M.S.</h3>
           <p>
+<<<<<<< HEAD
             Dedicated Ayurvedic Physician with 8+ year experience in diagnosing
             and treating patients using Holistic and traditional method. Skilled
             in Panchkarm treatment. Ayurved medicine, diet, committed to patient
             wellness and restoring balance through natural therapies.
+=======
+            A dedicated Ayurvedic Physician with over 8 years of experience, Dr.
+            Narale specializes in diagnosing and treating patients using
+            holistic and traditional methods. He is committed to restoring
+            balance and promoting patient wellness through natural therapies.
+            <br /><br />
+            Highly skilled in Panchakarma treatments, Ayurvedic medicine, and
+            personalized diet plans, his approach focuses on treating the root
+            cause of ailments to empower you to achieve lasting health.
+>>>>>>> b246bafbadc59ba8cd68205ed45f1fd9dcd35f36
           </p>
           <div class="doctor-contact">
             <p>
@@ -1079,5 +1090,20 @@
     </script>
 
     <script src="../static/script.js"></script>
+    <script>
+      // Smooth scroll to appointment form when Make Appointment is clicked
+      document.addEventListener("DOMContentLoaded", function () {
+        var btn = document.getElementById("makeAppointmentBtn");
+        if (btn) {
+          btn.addEventListener("click", function (e) {
+            var target = document.getElementById("contact");
+            if (target) {
+              e.preventDefault();
+              target.scrollIntoView({ behavior: "smooth" });
+            }
+          });
+        }
+      });
+    </script>
   </body>
 </html>
