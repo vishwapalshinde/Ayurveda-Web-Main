@@ -1596,6 +1596,7 @@ nav a {
 .gallery-wrapper {
   width: 90%; /* only 3 images visible */
   overflow: hidden;
+  scroll-snap-type: x mandatory; /* Add smooth snap scrolling */
 }
 
 .gallery-images {
@@ -1608,8 +1609,9 @@ nav a {
   height: 280px; /* Fixed height to maintain consistency */
   object-fit: cover; /* Maintain aspect ratio and cover the area */
   border-radius: 10px;
-  margin: 5px;
+  margin: 0; /* Remove margins for better alignment */
   flex-shrink: 0;
+  scroll-snap-align: start; /* Ensure images snap to start position */
 }
 
 .gallery-btn {
@@ -1632,9 +1634,13 @@ nav a {
   .gallery-images img {
     width: 100%; /* Show 1 image at a time on mobile */
     height: 250px; /* Increased height for better mobile view */
+    margin: 0; /* Ensure no margins on mobile for perfect alignment */
   }
   .gallery-wrapper {
-    width: 85%; /* Slightly narrower on mobile */
+    width: 90%; /* Better width for mobile alignment */
+  }
+  .gallery-images {
+    gap: 0; /* Remove any gaps between images on mobile */
   }
   .gallery-btn {
     font-size: 20px;
@@ -1654,9 +1660,13 @@ nav a {
   .gallery-images img {
     width: 100%; /* Show 1 image at a time on small mobile */
     height: 200px; /* Smaller height for very small screens */
+    margin: 0; /* Ensure no margins for perfect alignment */
   }
   .gallery-wrapper {
-    width: 80%;
+    width: 85%; /* Better width for small mobile alignment */
+  }
+  .gallery-images {
+    gap: 0; /* Remove any gaps between images on small mobile */
   }
   .gallery-btn {
     font-size: 18px;
