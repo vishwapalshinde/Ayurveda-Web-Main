@@ -17,11 +17,11 @@ html, body {
 /* ================================================= */
 /* FINAL FIX: Move Arrows Outside of the Card Area   */
 /* ================================================= */
-@media (min-width: 769px) {
+@media (min-width: 769px) { 
   /* This targets the main wrapper for the carousel */
   #services .carousel-wrapper {
     /* 1. Widen the wrapper to make room for arrows on the sides */
-    max-width: 1020px;
+    max-width: 1060px;
     
     /* 2. Add 60px of padding on the left/right for the arrows to sit in */
     padding: 0 60px;
