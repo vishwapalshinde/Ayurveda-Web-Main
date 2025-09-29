@@ -46,7 +46,7 @@ html, body {
 
   /* 4. This positions the "next" arrow in the new empty space */
   #services .carousel-btn.next {
-    right: 10px; /* Position arrow within the right padding */
+    right: 5px; /* Position arrow within the right padding */
     top: 50%;
     transform: translateY(-50%);
     z-index: 10;
