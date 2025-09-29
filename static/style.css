@@ -789,6 +789,34 @@ nav a {
         margin-left: auto;
         margin-right: auto;
     }
+    .doctor-image-wrapper {
+        padding: 20px; /* Add padding around the image wrapper */
+    }
+    .doctor-image {
+        border-radius: 10px; /* Add border radius to make it look better with padding */
+    }
+}
+
+/* Additional mobile styles for smaller screens */
+@media (max-width: 768px) {
+    .doctor-image-wrapper {
+        padding: 15px; /* Slightly less padding on smaller screens */
+    }
+    .doctor-info-text {
+        padding: 30px 20px; /* Reduce text padding on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .doctor-image-wrapper {
+        padding: 10px; /* Minimal padding on very small screens */
+    }
+    .doctor-info-text {
+        padding: 25px 15px;
+    }
+    .doctor-name-title {
+        font-size: 1.6rem; /* Reduce title size for small screens */
+    }
 }
 
 /* .about {
