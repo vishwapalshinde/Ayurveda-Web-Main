@@ -7,17 +7,26 @@
 // });
 
 // ===== Gallery Carousel =====
-// Gallery Carousel Scroll Logic (like Services Carousel)
+// Gallery Carousel Scroll Logic with Mobile Support
 document.addEventListener("DOMContentLoaded", function () {
   const galleryWrapper = document.querySelector(".gallery-wrapper");
   const prevGalleryBtn = document.querySelector(".gallery-btn.prev");
   const nextGalleryBtn = document.querySelector(".gallery-btn.next");
+  
   if (galleryWrapper && prevGalleryBtn && nextGalleryBtn) {
-    // Calculate scroll amount: width of one image (all images are same width)
-    const galleryImg = galleryWrapper.querySelector("img");
+    // Calculate scroll amount based on screen size
     function getScrollAmount() {
+      const galleryImg = galleryWrapper.querySelector("img");
       if (!galleryImg) return galleryWrapper.offsetWidth / 3;
-      return galleryImg.offsetWidth + 10; // 10px margin (5px each side)
+      
+      // Check if mobile view (768px and below)
+      if (window.innerWidth <= 768) {
+        // On mobile, scroll by full image width (100% of wrapper width)
+        return galleryWrapper.offsetWidth;
+      } else {
+        // On desktop, scroll by image width + margin
+        return galleryImg.offsetWidth + 10; // 10px margin (5px each side)
+      }
     }
     nextGalleryBtn.addEventListener("click", function () {
       galleryWrapper.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
@@ -25,8 +34,22 @@ document.addEventListener("DOMContentLoaded", function () {
     prevGalleryBtn.addEventListener("click", function () {
       galleryWrapper.scrollBy({ left: -getScrollAmount(), behavior: "smooth" });
     });
+    // Handle window resize to recalculate scroll amount
+    window.addEventListener("resize", function() {
+      // Update scroll behavior on resize if needed
+    });
+    
+    // Global functions for onclick handlers (if needed)
+    window.nextGallery = function() {
+      galleryWrapper.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
+    };
+    
+    window.prevGallery = function() {
+      galleryWrapper.scrollBy({ left: -getScrollAmount(), behavior: "smooth" });
+    };
   }
 });
+
 
 // Accordion Functionality
 document.querySelectorAll(".accordion-header").forEach(button => {
