@@ -2134,6 +2134,8 @@ nav a {
     /* Enable smooth scrolling and snapping on mobile */
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+    gap: 0; /* Remove gap to prevent showing other cards */
+    padding: 10px 0; /* Remove horizontal padding */
     
     /* Hide the scrollbar for a cleaner look */
     -ms-overflow-style: none;  /* IE and Edge */
@@ -2145,10 +2147,12 @@ nav a {
   }
 
   #services .service-card {
-    /* Make each card take up most of the screen width */
-    flex-basis: 90%;
-    width: 90%;
+    /* Make each card take up full viewport width minus some margin */
+    flex-basis: calc(100vw - 60px); /* Account for container padding */
+    width: calc(100vw - 60px);
+    min-width: calc(100vw - 60px); /* Prevent shrinking */
     scroll-snap-align: center; /* Snap cards to the center */
+    margin: 0 10px; /* Small margin to prevent edge touching */
   }
 
   /* Adjust button appearance for mobile */
@@ -2166,5 +2170,22 @@ nav a {
 
   #services .carousel-btn.next {
     right: 5px; /* Position button on the right edge */
+  }
+}
+
+/* Mobile styles for very small screens */
+@media (max-width: 480px) {
+  #services .service-card {
+    /* Make cards even more responsive on very small screens */
+    flex-basis: calc(100vw - 40px); /* Less padding on small screens */
+    width: calc(100vw - 40px);
+    min-width: calc(100vw - 40px);
+    margin: 0 5px; /* Smaller margin */
+    height: 380px; /* Slightly smaller height for small screens */
+  }
+  
+  #services .carousel-btn {
+    font-size: 1.5rem;
+    padding: 6px 10px;
   }
 }
