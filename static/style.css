@@ -1602,16 +1602,45 @@ nav a {
 /* Responsive gallery styles */
 @media (max-width: 768px) {
   .gallery-images img {
-    height: 180px; /* Smaller height on mobile */
+    width: 100%; /* Show 1 image at a time on mobile */
+    height: 250px; /* Increased height for better mobile view */
   }
   .gallery-wrapper {
-    width: 90%; /* Wider on mobile */
+    width: 85%; /* Slightly narrower on mobile */
+  }
+  .gallery-btn {
+    font-size: 20px;
+    padding: 8px 12px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .gallery-container {
+    gap: 15px; /* Add some space between buttons and gallery */
   }
 }
 
 @media (max-width: 480px) {
   .gallery-images img {
-    height: 150px; /* Even smaller on very small screens */
+    width: 100%; /* Show 1 image at a time on small mobile */
+    height: 200px; /* Smaller height for very small screens */
+  }
+  .gallery-wrapper {
+    width: 80%;
+  }
+  .gallery-btn {
+    font-size: 18px;
+    padding: 6px 10px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .gallery-container {
+    gap: 10px; /* Smaller gap on very small screens */
   }
 }
 
