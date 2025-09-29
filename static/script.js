@@ -21,11 +21,11 @@ document.addEventListener("DOMContentLoaded", function () {
       
       // Check if mobile view (768px and below)
       if (window.innerWidth <= 768) {
-        // On mobile, scroll by full image width (100% of wrapper width)
-        return galleryWrapper.offsetWidth;
+        // On mobile, scroll by exact image width for perfect alignment
+        return galleryImg.offsetWidth;
       } else {
-        // On desktop, scroll by image width + margin
-        return galleryImg.offsetWidth + 10; // 10px margin (5px each side)
+        // On desktop, scroll by image width (no margins now)
+        return galleryImg.offsetWidth;
       }
     }
     nextGalleryBtn.addEventListener("click", function () {
