@@ -2093,12 +2093,12 @@ nav a {
     padding: 5px; /* Add padding to prevent text overflow */
   }
 
-  /* 4. Adjust positions for the new, smaller container */
+    /* 4. Adjust positions for the new, smaller container */
   .top {
     transform: translate(0, -125px);
   }
   .right {
-    transform: translate(110px, -40px);
+    transform: translate(130px, -40px);
   }
   .bottom-right {
     transform: translate(75px, 100px);
@@ -2107,14 +2107,15 @@ nav a {
     transform: translate(-75px, 100px);
   }
   .left {
-    transform: translate(-110px, -40px);
+    transform: translate(-130px, -40px);
   }
+
   /* 5. Fix blinking animation transforms for mobile to prevent overlapping */
   .top.blinking { 
     transform: translate(0, -125px) scale(1.05); 
   }
   .right.blinking { 
-    transform: translate(110px, -40px) scale(1.05); 
+    transform: translate(130px, -40px) scale(1.05); 
   }
   .bottom-right.blinking { 
     transform: translate(75px, 100px) scale(1.05); 
@@ -2123,7 +2124,7 @@ nav a {
     transform: translate(-75px, 100px) scale(1.05); 
   }
   .left.blinking { 
-    transform: translate(-110px, -40px) scale(1.05); 
+    transform: translate(-130px, -40px) scale(1.05); 
   }
 
   /* 6. Adjust info box for mobile */
@@ -2179,7 +2180,7 @@ nav a {
     transform: translate(0, -95px);
   }
   .right {
-    transform: translate(85px, -30px);
+    transform: translate(100px, -30px);
   }
   .bottom-right {
     transform: translate(60px, 80px);
@@ -2188,7 +2189,7 @@ nav a {
     transform: translate(-60px, 80px);
   }
   .left {
-    transform: translate(-85px, -30px);
+    transform: translate(-100px, -30px);
   }
 
   /* Fix blinking transforms for very small screens */
@@ -2196,7 +2197,7 @@ nav a {
     transform: translate(0, -95px) scale(1.05); 
   }
   .right.blinking { 
-    transform: translate(85px, -30px) scale(1.05); 
+    transform: translate(100px, -30px) scale(1.05); 
   }
   .bottom-right.blinking { 
     transform: translate(60px, 80px) scale(1.05); 
@@ -2205,7 +2206,7 @@ nav a {
     transform: translate(-60px, 80px) scale(1.05); 
   }
   .left.blinking { 
-    transform: translate(-85px, -30px) scale(1.05); 
+    transform: translate(-100px, -30px) scale(1.05); 
   }
 
   .info-box {
@@ -2221,8 +2222,6 @@ nav a {
     font-size: 13px;
   }
 }
-}
-
 /* ================================================= */
 /* FIX: Reposition Desktop Services Carousel Buttons */
 /* ================================================= */
