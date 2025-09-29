@@ -1376,9 +1376,19 @@ nav a {
   border-radius: 12px;
   box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.15);
   max-width: 850px;
+  width: 850px;
+  height: 280px;
   margin: 0 auto;
   padding: 40px 50px;
   text-align: left;
+  box-sizing: border-box;
+}
+
+.testimonial-content {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .testimonial-content h3 {
@@ -1402,6 +1412,13 @@ nav a {
   font-size: 1.05rem;
   color: #444;
   line-height: 1.7;
+  flex-grow: 1;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  margin: 0;
 }
 
 .next-btn {
@@ -1443,7 +1460,93 @@ nav a {
 .prev-btn:hover {
   background: #5a189a;
 }
+/* Testimonial Responsive Styles */
+@media (max-width: 768px) {
+  .testimonial-box {
+    width: 90%;
+    max-width: 90%;
+    height: 320px;
+    padding: 30px 25px;
+  }
+  
+  .testimonial-content {
+    height: 260px;
+  }
+  
+  .testimonial-content h3 {
+    font-size: 1.1rem;
+  }
+  
+  .testimonial-content p {
+    font-size: 1rem;
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
+  }
+  
+  .prev-btn {
+    left: -20px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
+  }
+  
+  .next-btn {
+    right: -20px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
+  }
+}
 
+@media (max-width: 480px) {
+  .testimonial-box {
+    width: 95%;
+    max-width: 95%;
+    height: 350px;
+    padding: 25px 20px;
+  }
+  
+  .testimonial-content {
+    height: 300px;
+  }
+  
+  .testimonial-content h3 {
+    font-size: 1rem;
+  }
+  
+  .testimonial-content .role {
+    font-size: 0.8rem;
+  }
+  
+  .testimonial-content p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    -webkit-line-clamp: 6;
+    line-clamp: 6;
+  }
+  
+  .prev-btn {
+    left: -15px;
+    width: 35px;
+    height: 35px;
+    font-size: 1.2rem;
+  }
+  
+  .next-btn {
+    right: -15px;
+    width: 35px;
+    height: 35px;
+    font-size: 1.2rem;
+  }
+  
+  .testimonial-title {
+    font-size: 1.5rem;
+  }
+  
+  .testimonial-subtitle {
+    font-size: 0.9rem;
+  }
+}
 
 
 /* Gallery Section */
