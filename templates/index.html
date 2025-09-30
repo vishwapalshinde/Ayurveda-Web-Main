@@ -328,7 +328,7 @@
         </div>
 
         <!-- Button (Redirects to new page instead of expanding) -->
-       <div class="btn-container">
+        <div class="btn-container">
           <a href="{{ url_for('treatments') }}" class="view-btn"
             >View All Treatments</a
           >
@@ -406,7 +406,7 @@
             <div class="service-card">
               <div class="service-img-info">
                 <img
-                  src="../static/images/swarnprashan.jpg"
+                  src="../static/images/suvarnprashan.jpg"
                   alt="Suvarnaprashan"
                 />
                 <div class="service-info">
@@ -460,11 +460,9 @@
 
           <!-- Product 2 -->
           <div class="product-card">
-            <img
-              src="../static/images/Charavnprash.jpg"
-              alt="Chyawanprash"
-            />
+            <img src="../static/images/Charavnprash.jpg" alt="Chyawanprash" />
             <h3>Chyawanprash</h3>
+            <div class="product-price">₹1200 - 1 kg</div>
             <!-- <button class="add-cart-btn">Add to Cart</button> -->
             <a
               href="https://wa.me/918999807775?text=I%20Would%20Like%20To%20Get%20An%20Appointment"
@@ -487,6 +485,7 @@
               alt="Suvarna Prashan"
             />
             <h3>Suvarna Prashan</h3>
+            <div class="product-price">₹1500 - 10ml</div>
             <!-- <button class="add-cart-btn">Add to Cart</button> -->
             <a
               href="https://wa.me/918999807775?text=I%20Would%20Like%20To%20Get%20An%20Appointment"
@@ -518,55 +517,16 @@
 
         <div class="wellness-stats">
           <div class="stat-item">
-            <h3 class="counter" data-target="7250">0</h3>
-            <p>Happy Clients</p>
+            <h3 class="counter" data-target="650">0</h3>
+            <p>Happy Patients</p>
           </div>
           <div class="stat-item">
-            <h3 class="counter" data-target="102">0</h3>
+            <h3 class="counter" data-target="445">0</h3>
             <p>Good Ratings</p>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- What People Say Section -->
-    <!-- Testimonial Section -->
-    <!-- <section class="testimonial-section">
-      <div class="testimonial-container">
-        <p class="section-subtitle">WHAT PEOPLE SAY</p>
-        <h2 class="section-title">Transformative Ayurvedic Journey</h2>
-
-        <div class="testimonial-carousel-wrapper">
-          <button class="carousel-nav-btn prev-btn">&#10094;</button>
-          <div class="testimonial-carousel">
-            <div class="testimonial-card">
-              <span class="quote">❝</span>
-              <h3 class="client-name">Meghna Patil</h3>
-              <p class="role">Patient</p>
-              <div class="stars">★★★★★</div>
-              <p class="testimonial-text">
-                Excellent results for weight loss management by medicines and
-                panchakarma therapy... will recommend to all. Do visit the
-                clinic for all types of diseases...polite staff and proper
-                cleanliness in clinic...
-              </p>
-            </div>
-            <div class="testimonial-card">
-              <span class="quote">❝</span>
-              <h3 class="client-name">Jay S. Singh</h3>
-              <p class="role">Patient</p>
-              <div class="stars">★★★★★</div>
-              <p class="testimonial-text">
-                Excellent medications to all the treatments... Very good nadi
-                parikshan and prakruti parikshan by doctor... Must visit who
-                needs ayurveda treatments.
-              </p>
-            </div>
-          </div>
-          <button class="carousel-nav-btn next-btn">&#10095;</button>
-        </div>
-      </div>
-    </section> -->
 
     <!-- Testimonials Section -->
     <section class="testimonial-section">
@@ -650,7 +610,7 @@
           </p>
         </div>
       </div>
-      <a href="treatments.html" class="btn treatments-btn">View All Treatments</a>
+      <a href="{{ url_for('treatments') }}" class="btn treatments-btn">View All Treatments</a>
     </section> -->
 
     <!-- Gallery section  -->
@@ -749,45 +709,35 @@
           <div class="accordion">
             <div class="accordion-item">
               <button class="accordion-header">
-                What is Panchakarma, and how does it benefit me?
+                What are the clinic’s operating hours?
+                <span class="icon">+</span>
+              </button>
+              <div class="accordion-content">
+                <p>The clinic is open daily from <b>11:00 AM to 8:00 PM</b>.</p>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-header">
+                Where is the clinic located?
                 <span class="icon">+</span>
               </button>
               <div class="accordion-content">
                 <p>
-                  Panchakarma is a comprehensive Ayurvedic detoxification and
-                  rejuvenation therapy that aims to eliminate toxins from the
-                  body while balancing the doshas. It offers numerous benefits,
-                  including improved digestion, enhanced immunity, stress
-                  relief, and overall vitality.
+                  The clinic is located at
+                  <b
+                    >Navrang Chowk, near Shital Collection cloth showroom,
+                    Mangalwedha, Maharashtra 413305</b
+                  >.
                 </p>
               </div>
             </div>
             <div class="accordion-item">
               <button class="accordion-header">
-                Is Ayurveda suitable for everyone?
+                How can I contact the clinic?
                 <span class="icon">+</span>
               </button>
               <div class="accordion-content">
-                <p>
-                  Ayurveda is generally safe for most people. However, the
-                  suitability of specific treatments depends on age, health
-                  condition, and individual constitution. Consulting a qualified
-                  Ayurvedic doctor ensures personalized recommendations.
-                </p>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <button class="accordion-header">
-                How long does it take to see results?
-                <span class="icon">+</span>
-              </button>
-              <div class="accordion-content">
-                <p>
-                  Results vary depending on the individual and the treatment
-                  plan. Some people notice improvements within days, while
-                  others may require several weeks of consistent Ayurvedic care
-                  for visible results.
-                </p>
+                <p>You can reach us by phone at <b>98229 44945</b>.</p>
               </div>
             </div>
           </div>
@@ -922,21 +872,17 @@
             <li><a href="#">Home</a></li>
             <li><a href="#">About Us</a></li>
             <li><a href="#">Contact Us</a></li>
-            <li><a href="#">Disclaimer</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms & Conditions</a></li>
           </ul>
         </div>
 
         <div class="footer-column">
           <h3>Contact Us</h3>
           <ul class="contact-info">
-            <li> +91 9822944945</li>
-
-            <li> kailasnarale99@gmail.com</li>
+            <li><b>Phone</b>: +91 9822944945</li>
+            <li><b>Email</b>: kailasnarale99@gmail.com</li>
             <li>
-              Navrang Chowk, near shital collection cloth showroom, Mangalwedha,
-              Maharashtra 413305
+              <b>Address</b>: Navrang Chowk, near shital collection cloth
+              showroom, Mangalwedha, Maharashtra 413305
             </li>
             <li><b>Time</b> : 11am - 8pm</li>
           </ul>
@@ -982,19 +928,29 @@
     <script>
       const testimonials = [
         {
-          name: "Meghna Patil",
+          name: "Prashant Gaikwad",
           role: "Patient",
-          text: "Excellent results for weight loss management by medicines and panchakarma therapy... will recommend to all. Do visit the clinic for all types of diseases. Polite staff and proper cleanliness in clinic...",
+          text: "Vaman therapy is best hyperacidity. I felt relaxed also the runny nose and anxiety totally got clear. Absolutely it is the best ayurvedic meditation clinic located at navrang chowk mangalwedha.",
         },
         {
-          name: "Jay S. Singh",
+          name: "Lahu Hajare",
           role: "Patient",
-          text: "Excellent medications to all the treatments... Very good nadi parikshan and prakruti parikshan by doctor. Must visit who needs ayurveda treatments.",
+          text: "Vaman therapy with leech was new to me, but very effective for my skin issues. The doctor is experienced and made me feel comfortable. A true gem with best ayurvedic meditation and Clinic at navrang chowk mangalwedha.",
         },
         {
-          name: "Ankita Sharma",
+          name: "Darasing Nimbalkar",
           role: "Patient",
-          text: "I had an amazing experience with panchakarma therapy. Feeling more energetic and balanced in life. Highly recommended!",
+          text: "Leech therapy is best palmar psoriasis. Totally itching free within 15 days medicine. Very unique experience. Must say this is best ayurvedic meditation and clinic in navrang chowk mangalwedha.",
+        },
+        {
+          name: "Shahid Atar",
+          role: "Patient",
+          text: "Vaman therapy is best hypothyroid for Loss of weight, hairloss, uncomfortable feel. Dr kailas sir totally ayurvedic medicine and panchakarma. Shree Vishvniwas is best ayurveda clinic and best option in mangalwedha city.",
+        },
+        {
+          name: "Sahil Shaikh",
+          role: "Patient",
+          text: "Suvarnaprashan for kids is very effective. I take my daughter here every month. Her immunity has improved a lot. Truly the best ayurveda mediation and clinic in navrng chowk Mangalwedha for child wellness.",
         },
       ];
 
@@ -1088,12 +1044,32 @@
               e.preventDefault();
               target.scrollIntoView({ behavior: "smooth" });
             }
+              });
+            }
           });
-        }
-      });
-    </script>
 
-    <script src="../static/script.js"></script>
+          // Enhanced Sticky Navbar Functionality
+          const header = document.querySelector('header');
+          let lastScrollTop = 0;
+          
+          function handleScroll() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
+              header.classList.add('sticky-active');
+            } else {
+              header.classList.remove('sticky-active');
+            }
+            
+            lastScrollTop = scrollTop;
+          }
+          
+          // Listen for scroll events
+          window.addEventListener('scroll', handleScroll, { passive: true });
+          
+          // Handle resize events
+          window.addEventListener('resize', handleScroll, { passive: true });
+        </script>    <script src="../static/script.js"></script>
     <script>
       // Smooth scroll to appointment form when Make Appointment is clicked
       document.addEventListener("DOMContentLoaded", function () {
