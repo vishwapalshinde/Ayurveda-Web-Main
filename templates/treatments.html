@@ -17,7 +17,17 @@
           />
           <span class="clinic-name">Shri VishwaNiwas Clinic</span>
         </div>
-        <nav>
+        <button
+          class="hamburger"
+          id="hamburger"
+          aria-label="Open navigation"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav id="mainNav">
           <ul>
             <li><a href="{{ url_for('home') }}">Home</a></li>
             <li><a href="#">About Us</a></li>
@@ -138,7 +148,7 @@
 
         <!-- Back Button -->
         <div class="btn-container">
-           <a href="{{ url_for('home') }}" class="view-btn">← Back to Home</a>
+          <a href="{{ url_for('home') }}" class="view-btn">← Back to Home</a>
         </div>
 
          <footer class="site-footer">
@@ -172,22 +182,16 @@
             <li><a href="{{ url_for('home') }}">Home</a></li>
             <li><a href="#">About Us</a></li>
             <li><a href="#">Contact Us</a></li>
-            <li><a href="#">Disclaimer</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms & Conditions</a></li>
           </ul>
         </div>
 
         <div class="footer-column">
           <h3>Contact Us</h3>
           <ul class="contact-info">
-            <li> +91 9822944945</li>
 
-            <li> kailasnarale99@gmail.com</li>
-            <li>
-              Navrang Chowk, near shital collection cloth showroom, Mangalwedha,
-              Maharashtra 413305
-            </li>
+            <li><b>Phone Number</b>: +91 9822944945</li>
+            <li><b>Email</b>: kailasnarale99@gmail.com</li>
+            <li><b>Address</b>: Navrang Chowk, near shital collection cloth showroom, Mangalwedha, Maharashtra 413305</li>
             <li><b>Time</b> : 11am - 8pm</li>
           </ul>
         </div>
@@ -195,5 +199,31 @@
     </footer>
 
       
+    <script>
+      // Responsive Navbar Hamburger Toggle
+      document.addEventListener("DOMContentLoaded", function () {
+        const hamburger = document.getElementById("hamburger");
+        const nav = document.getElementById("mainNav");
+        if (hamburger && nav) {
+          hamburger.addEventListener("click", function () {
+            hamburger.classList.toggle("active");
+            nav.classList.toggle("open");
+            const expanded =
+              hamburger.getAttribute("aria-expanded") === "true";
+            hamburger.setAttribute("aria-expanded", !expanded);
+          });
+          // Close nav when clicking a link (mobile UX)
+          nav.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", function () {
+              if (window.innerWidth <= 900) {
+                hamburger.classList.remove("active");
+                nav.classList.remove("open");
+                hamburger.setAttribute("aria-expanded", "false");
+              }
+            });
+          });
+        }
+      });
+    </script>
   </body>
 </html>
