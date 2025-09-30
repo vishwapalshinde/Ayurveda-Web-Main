@@ -28,12 +28,15 @@ document.addEventListener("DOMContentLoaded", function () {
         return galleryImg.offsetWidth;
       }
     }
+    
     nextGalleryBtn.addEventListener("click", function () {
       galleryWrapper.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
     });
+    
     prevGalleryBtn.addEventListener("click", function () {
       galleryWrapper.scrollBy({ left: -getScrollAmount(), behavior: "smooth" });
     });
+    
     // Handle window resize to recalculate scroll amount
     window.addEventListener("resize", function() {
       // Update scroll behavior on resize if needed
@@ -49,7 +52,6 @@ document.addEventListener("DOMContentLoaded", function () {
     };
   }
 });
-
 
 // Accordion Functionality
 document.querySelectorAll(".accordion-header").forEach(button => {
