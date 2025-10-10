@@ -7,48 +7,55 @@
 // });
 
 // ===== Gallery Carousel =====
-// Gallery Carousel Scroll Logic with Mobile Support
+
+/* REPLACE the old gallery script at the top of the file with this one */
+
+// ===== Gallery Carousel =====
 document.addEventListener("DOMContentLoaded", function () {
   const galleryWrapper = document.querySelector(".gallery-wrapper");
   const prevGalleryBtn = document.querySelector(".gallery-btn.prev");
   const nextGalleryBtn = document.querySelector(".gallery-btn.next");
   
   if (galleryWrapper && prevGalleryBtn && nextGalleryBtn) {
-    // Calculate scroll amount based on screen size
+    const firstImage = galleryWrapper.querySelector("img");
+    if (!firstImage) return; // Exit if no images
+
+    // Function to calculate how far to scroll
     function getScrollAmount() {
-      const galleryImg = galleryWrapper.querySelector("img");
-      if (!galleryImg) return galleryWrapper.offsetWidth / 3;
-      
-      // Check if mobile view (768px and below)
-      if (window.innerWidth <= 768) {
-        // On mobile, scroll by exact image width for perfect alignment
-        return galleryImg.offsetWidth;
-      } else {
-        // On desktop, scroll by image width (no margins now)
-        return galleryImg.offsetWidth;
-      }
+      // Get the gap value from the CSS (default to 20px if not found)
+      const gap = parseInt(window.getComputedStyle(galleryWrapper.querySelector('.gallery-images')).gap) || 20;
+      return firstImage.offsetWidth + gap;
     }
     
     nextGalleryBtn.addEventListener("click", function () {
-      galleryWrapper.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
+      // Check if near the end
+      if (galleryWrapper.scrollLeft + galleryWrapper.clientWidth >= galleryWrapper.scrollWidth - 1) {
+          // If at the end, loop to the start
+          galleryWrapper.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+          // Otherwise, scroll to the next image
+          galleryWrapper.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
+      }
     });
     
     prevGalleryBtn.addEventListener("click", function () {
-      galleryWrapper.scrollBy({ left: -getScrollAmount(), behavior: "smooth" });
+       // Check if at the beginning
+       if (galleryWrapper.scrollLeft === 0) {
+          // If at the start, loop to the end
+          galleryWrapper.scrollTo({ left: galleryWrapper.scrollWidth, behavior: "smooth" });
+       } else {
+          // Otherwise, scroll to the previous image
+          galleryWrapper.scrollBy({ left: -getScrollAmount(), behavior: "smooth" });
+       }
     });
     
-    // Handle window resize to recalculate scroll amount
-    window.addEventListener("resize", function() {
-      // Update scroll behavior on resize if needed
-    });
-    
-    // Global functions for onclick handlers (if needed)
+    // Global functions for inline onclick handlers (to maintain compatibility)
     window.nextGallery = function() {
-      galleryWrapper.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
+      nextGalleryBtn.click();
     };
     
     window.prevGallery = function() {
-      galleryWrapper.scrollBy({ left: -getScrollAmount(), behavior: "smooth" });
+      prevGalleryBtn.click();
     };
   }
 });
@@ -211,6 +218,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+
 /* ================================================== */
 /* NEW: JavaScript for "Our Services" Carousel Buttons */
 /* ================================================== */
@@ -234,14 +242,57 @@ document.addEventListener("DOMContentLoaded", function () {
       return cardWidth + gap;
     };
 
-    // Add click event for the "next" button
+    // Add click event for the "next" button with loop logic
     nextBtn.addEventListener("click", function () {
-      servicesCarousel.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
+      // Check if the scroll position is near the end
+      // We use a small buffer (-1) to account for potential decimal values
+      if (servicesCarousel.scrollLeft + servicesCarousel.clientWidth >= servicesCarousel.scrollWidth - 1) {
+        // If at the end, smoothly scroll back to the start
+        servicesCarousel.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        // Otherwise, just scroll to the next card
+        servicesCarousel.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
+      }
     });
 
-    // Add click event for the "previous" button
+    // Add click event for the "previous" button with loop logic
     prevBtn.addEventListener("click", function () {
-      servicesCarousel.scrollBy({ left: -getScrollAmount(), behavior: "smooth" });
+      // Check if the scroll position is at the start
+      if (servicesCarousel.scrollLeft === 0) {
+        // If at the start, smoothly scroll to the very end
+        servicesCarousel.scrollTo({ left: servicesCarousel.scrollWidth, behavior: 'smooth' });
+      } else {
+        // Otherwise, just scroll to the previous card
+        servicesCarousel.scrollBy({ left: -getScrollAmount(), behavior: "smooth" });
+      }
+    });
+  }
+});
+
+
+/* === YouTube Section Carousel Logic === */
+document.addEventListener("DOMContentLoaded", function () {
+  const youtubeCarousel = document.querySelector(".youtube-section .carousel");
+
+  if (youtubeCarousel) {
+    const prevBtn = document.querySelector(".youtube-section .carousel-btn.prev");
+    const nextBtn = document.querySelector(".youtube-section .carousel-btn.next");
+    const firstCard = youtubeCarousel.querySelector(".youtube-card");
+
+    if (!firstCard) return;
+
+    const getScrollAmount = () => {
+      const cardWidth = firstCard.offsetWidth;
+      const gap = parseInt(window.getComputedStyle(youtubeCarousel).gap) || 25;
+      return cardWidth + gap;
+    };
+
+    nextBtn.addEventListener("click", function () {
+      youtubeCarousel.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
+    });
+
+    prevBtn.addEventListener("click", function () {
+      youtubeCarousel.scrollBy({ left: -getScrollAmount(), behavior: "smooth" });
     });
   }
 });
