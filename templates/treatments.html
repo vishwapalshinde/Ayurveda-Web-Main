@@ -28,13 +28,13 @@
         </button>
         <nav id="mainNav">
           <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#about">About Us</a></li>
-            <li><a href="index.html#services">Services</a></li>
-            <li><a href="index.html#panchakarma">Panchakarma</a></li>
-            <li><a href="index.html#products">Products</a></li>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('home') }}#about">About Us</a></li>
+            <li><a href="{{ url_for('home') }}#services">Services</a></li>
+            <li><a href="{{ url_for('home') }}#panchakarma">Panchakarma</a></li>
+            <li><a href="{{ url_for('home') }}#products">Products</a></li>
             <li><a href="#">Blogs</a></li>
-            <li><a href="index.html#contact">Contact Us</a></li>
+            <li><a href="{{ url_for('home') }}#contact">Contact Us</a></li>
           </ul>
         </nav>
       </div>
@@ -170,7 +170,7 @@
         </div>
 
         <div class="btn-container">
-          <a href="index.html" class="view-btn">← Back to Home</a>
+          <a href="{{ url_for('home') }}" class="view-btn">← Back to Home</a>
         </div>
       </div>
     </section>
@@ -190,8 +190,8 @@
           <div class="footer-column">
             <h3>Products</h3>
             <nav class="footer-nav">
-              <a href="index.html#products">Suvarna Prashan</a>
-              <a href="index.html#products">Chavan Prash</a>
+              <a href="{{ url_for('home') }}#products">Suvarna Prashan</a>
+              <a href="{{ url_for('home') }}#products">Chavan Prash</a>
             </nav>
           </div>
 
@@ -255,9 +255,9 @@
           <div class="footer-column">
             <h3>Quick Links</h3>
             <nav class="footer-nav">
-              <a href="index.html">Home</a>
-              <a href="index.html#about">About Us</a>
-              <a href="index.html#contact">Contact Us</a>
+              <a href="{{ url_for('home') }}">Home</a>
+              <a href="{{ url_for('home') }}#about">About Us</a>
+              <a href="{{ url_for('home') }}#contact">Contact Us</a>
             </nav>
           </div>
 
