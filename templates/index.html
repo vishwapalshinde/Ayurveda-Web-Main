@@ -46,12 +46,12 @@
         </button>
         <nav id="mainNav">
           <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#panchakarma">Panchakarma</a></li>
-            <li><a href="#products">Products</a></li>
-            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('home') }}#about">About Us</a></li>
+            <li><a href="{{ url_for('home') }}#services">Services</a></li>
+            <li><a href="{{ url_for('home') }}#panchakarma">Panchakarma</a></li>
+            <li><a href="{{ url_for('home') }}#products">Products</a></li>
+            <li><a href="{{ url_for('home') }}#contact">Contact Us</a></li>
           </ul>
         </nav>
         <script>
@@ -353,7 +353,9 @@
 
         <!-- Button (Redirects to new page instead of expanding) -->
         <div class="btn-container">
-          <a href="{{ url_for('treatments') }}" class="view-btn">View All Treatments</a>
+          <a id="viewAllBtn" href="{{ url_for('treatments') }}" class="view-btn"
+            >View All Treatments</a
+          >
         </div>
       </div>
     </section>
@@ -679,15 +681,27 @@
     </section>
 
     <script>
-      document
-        .getElementById("viewAllBtn")
-        .addEventListener("click", function () {
+      // Safe handler for "View All Treatments" button.
+      // If an inline element with id "all-treatments" exists, toggle it in-page.
+      // Otherwise allow the anchor to navigate to the treatments page (/treatments).
+      (function () {
+        const btn = document.getElementById("viewAllBtn");
+        if (!btn) return; // nothing to do
+
+        btn.addEventListener("click", function (e) {
           const allTreatments = document.getElementById("all-treatments");
+          if (!allTreatments) {
+            // No inline list to toggle, let the link behave normally (navigate)
+            return;
+          }
+          // Toggle inline list instead of navigating
+          e.preventDefault();
           allTreatments.classList.toggle("hidden");
-          this.textContent = allTreatments.classList.contains("hidden")
+          btn.textContent = allTreatments.classList.contains("hidden")
             ? "View All Treatments"
             : "Show Less";
         });
+      })();
     </script>
 
     <!-- <section class="treatments">
@@ -1068,9 +1082,9 @@
           <div class="footer-column">
             <h3>Quick Links</h3>
             <nav class="footer-nav">
-              <a href="index.html">Home</a>
-              <a href="#about">About Us</a>
-              <a href="#contact">Contact Us</a>
+              <a href="{{ url_for('home') }}">Home</a>
+              <a href="{{ url_for('home') }}#about">About Us</a>
+              <a href="{{ url_for('home') }}#contact">Contact Us</a>
             </nav>
           </div>
 
