@@ -8,7 +8,7 @@
 
 // ===== Gallery Carousel =====
 
-/* REPLACE the old gallery script at the top of the file with this one */
+// REPLACE the old gallery script at the top of the file with this new one
 
 // ===== Gallery Carousel =====
 document.addEventListener("DOMContentLoaded", function () {
@@ -20,34 +20,52 @@ document.addEventListener("DOMContentLoaded", function () {
     const firstImage = galleryWrapper.querySelector("img");
     if (!firstImage) return; // Exit if no images
 
+    let galleryInterval; // Variable to hold our timer
+
     // Function to calculate how far to scroll
     function getScrollAmount() {
-      // Get the gap value from the CSS (default to 20px if not found)
       const gap = parseInt(window.getComputedStyle(galleryWrapper.querySelector('.gallery-images')).gap) || 20;
       return firstImage.offsetWidth + gap;
     }
     
+    // Function to handle moving to the next image
+    function goToNextImage() {
+        if (galleryWrapper.scrollLeft + galleryWrapper.clientWidth >= galleryWrapper.scrollWidth - 1) {
+            galleryWrapper.scrollTo({ left: 0, behavior: "smooth" });
+        } else {
+            galleryWrapper.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
+        }
+    }
+
+    // Function to start, stop, and reset the timer based on screen size
+    function manageGalleryTimer() {
+        clearInterval(galleryInterval); // Clear any existing timer
+        if (window.innerWidth <= 768) { // Check if we are in mobile view
+            galleryInterval = setInterval(goToNextImage, 5000); // Start new 5-second timer
+        }
+    }
+
+    // Event listener for the "next" button
     nextGalleryBtn.addEventListener("click", function () {
-      // Check if near the end
-      if (galleryWrapper.scrollLeft + galleryWrapper.clientWidth >= galleryWrapper.scrollWidth - 1) {
-          // If at the end, loop to the start
-          galleryWrapper.scrollTo({ left: 0, behavior: "smooth" });
-      } else {
-          // Otherwise, scroll to the next image
-          galleryWrapper.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
-      }
+      goToNextImage();
+      manageGalleryTimer(); // Reset the timer after a manual click
     });
     
+    // Event listener for the "previous" button
     prevGalleryBtn.addEventListener("click", function () {
-       // Check if at the beginning
        if (galleryWrapper.scrollLeft === 0) {
-          // If at the start, loop to the end
           galleryWrapper.scrollTo({ left: galleryWrapper.scrollWidth, behavior: "smooth" });
        } else {
-          // Otherwise, scroll to the previous image
           galleryWrapper.scrollBy({ left: -getScrollAmount(), behavior: "smooth" });
        }
+       manageGalleryTimer(); // Reset the timer after a manual click
     });
+    
+    // Start the timer when the page loads
+    manageGalleryTimer();
+
+    // Add an event listener to manage the timer when the window is resized
+    window.addEventListener('resize', manageGalleryTimer);
     
     // Global functions for inline onclick handlers (to maintain compatibility)
     window.nextGallery = function() {
@@ -59,7 +77,6 @@ document.addEventListener("DOMContentLoaded", function () {
     };
   }
 });
-
 // Accordion Functionality
 document.querySelectorAll(".accordion-header").forEach(button => {
   button.addEventListener("click", () => {
@@ -219,53 +236,67 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+/* REPLACE the old "Our Services" script block with this new one */
+
 /* ================================================== */
 /* NEW: JavaScript for "Our Services" Carousel Buttons */
 /* ================================================== */
 document.addEventListener("DOMContentLoaded", function () {
   const servicesCarousel = document.querySelector("#services .carousel");
 
-  // Only run the script if the services carousel exists on the page
   if (servicesCarousel) {
     const prevBtn = document.querySelector("#services .carousel-btn.prev");
     const nextBtn = document.querySelector("#services .carousel-btn.next");
     const firstCard = servicesCarousel.querySelector(".service-card");
 
-    // Exit if there are no cards
     if (!firstCard) return;
 
-    // Function to calculate how far to scroll
+    let servicesInterval; // Variable to hold our timer
+
     const getScrollAmount = () => {
       const cardWidth = firstCard.offsetWidth;
-      // Get the gap value from the CSS
       const gap = parseInt(window.getComputedStyle(servicesCarousel).gap) || 20;
       return cardWidth + gap;
     };
+    
+    // Function to handle moving to the next service card
+    function goToNextService() {
+        if (servicesCarousel.scrollLeft + servicesCarousel.clientWidth >= servicesCarousel.scrollWidth - 1) {
+            servicesCarousel.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+            servicesCarousel.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
+        }
+    }
+    
+    // Function to manage the timer based on screen size
+    function manageServicesTimer() {
+        clearInterval(servicesInterval); // Clear any existing timer
+        if (window.innerWidth <= 768) { // Only run timer on mobile
+            servicesInterval = setInterval(goToNextService, 5000); // Start new 5-second timer
+        }
+    }
 
-    // Add click event for the "next" button with loop logic
+    // Event listener for the "next" button
     nextBtn.addEventListener("click", function () {
-      // Check if the scroll position is near the end
-      // We use a small buffer (-1) to account for potential decimal values
-      if (servicesCarousel.scrollLeft + servicesCarousel.clientWidth >= servicesCarousel.scrollWidth - 1) {
-        // If at the end, smoothly scroll back to the start
-        servicesCarousel.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        // Otherwise, just scroll to the next card
-        servicesCarousel.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
-      }
+      goToNextService();
+      manageServicesTimer(); // Reset timer on manual click
     });
 
-    // Add click event for the "previous" button with loop logic
+    // Event listener for the "previous" button
     prevBtn.addEventListener("click", function () {
-      // Check if the scroll position is at the start
       if (servicesCarousel.scrollLeft === 0) {
-        // If at the start, smoothly scroll to the very end
         servicesCarousel.scrollTo({ left: servicesCarousel.scrollWidth, behavior: 'smooth' });
       } else {
-        // Otherwise, just scroll to the previous card
-        servicesCarousel.scrollBy({ left: -getScrollAmount(), behavior: "smooth" });
+        servicesCarousel.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
       }
+      manageServicesTimer(); // Reset timer on manual click
     });
+
+    // Start the timer when the page loads
+    manageServicesTimer();
+
+    // Add an event listener to manage the timer when the window is resized
+    window.addEventListener('resize', manageServicesTimer);
   }
 });
 
