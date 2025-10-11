@@ -2606,8 +2606,8 @@ nav a {
     /* Make each card take up most of the screen width */
     .youtube-section .youtube-card {
         scroll-snap-align: center;
-        flex-basis: 90%; /* Show one card at a time */
-        width: 90%;
+        flex-basis: 100%; /* Show one card at a time */
+        width: 100%;
     }
 
     /* --- Make Arrow Buttons Visible and Style Them for Mobile --- */
