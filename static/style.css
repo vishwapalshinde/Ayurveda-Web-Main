@@ -413,11 +413,16 @@ header.sticky-active {
   padding: 2px 8px;
   display: flex;
   align-items: center;
+  gap: 12px; /* space between logo image and clinic name */
 }
 .logo img {
   height: 70px;
   background: #eeffde;
   border-radius: 8px;
+}
+/* Backup spacing if older browsers do not support gap on flex */
+.logo .clinic-name {
+  margin-left: 6px;
 }
 nav ul {
   display: flex;
@@ -431,6 +436,15 @@ nav a {
   text-decoration: none;
   color: #000;
   font-weight: 500;
+  font-size: 1 rem; 
+}
+
+/* Ensure clinic name and nav links have consistent sizing */
+.logo .clinic-name,
+#mainNav a,
+nav ul li a {
+  font-size: 16px;
+  line-height: 1.1;
 }
 
 /* Hamburger styles */
